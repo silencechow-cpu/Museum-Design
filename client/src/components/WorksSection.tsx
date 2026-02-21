@@ -161,7 +161,7 @@ export default function WorksSection() {
         )}
 
         {/* 查看更多按钮 */}
-        {!isLoading && allWorks && allWorks.length > 6 && (
+        {!isLoading && allWorks && allWorks.length >= 6 && (
         <div className="text-center mt-12">
           <Link href="/works">
           <button className="px-8 py-3 border-2 border-primary text-primary rounded-md font-medium hover:bg-primary hover:text-primary-foreground transition-all duration-300">

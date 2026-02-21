@@ -234,7 +234,7 @@ export default function CollectionsSection() {
           </div>
           
           {/* 查看更多按钮 */}
-          {allCollections && allCollections.total > 6 && (
+          {allCollections && allCollections.total >= 6 && (
             <div className="flex justify-center mt-12">
               <Link href="/collections">
                 <button className="px-8 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-all duration-300 font-medium">
