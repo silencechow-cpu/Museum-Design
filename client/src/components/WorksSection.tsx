@@ -185,7 +185,7 @@ export default function WorksSection() {
               onClick={() => setLocation('/works')}
               className="group relative px-10 py-3 border-2 border-[#C8102E] text-[#C8102E] font-medium tracking-widest text-sm hover:bg-[#C8102E] hover:text-white transition-all duration-300 overflow-hidden"
             >
-              <span className="relative z-10">{t('section.works.viewMore')}</span>
+              <span className="relative z-10">{t('section.works.viewAll')}</span>
               <div className="absolute inset-0 bg-[#C8102E] translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
             </button>
           </div>
