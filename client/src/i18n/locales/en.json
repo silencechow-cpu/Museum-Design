@@ -247,19 +247,43 @@
     "feature3Desc": "Efficient cultural creative design collection and cooperation"
   },
   "profile": {
-    "title": "Profile",
-    "editProfile": "Edit Profile",
-    "basicInfo": "Basic Information",
-    "name": "Name",
-    "email": "Email",
-    "avatar": "Avatar",
-    "uploadAvatar": "Upload Avatar",
-    "changeAvatar": "Change Avatar",
-    "saveChanges": "Save Changes",
-    "statistics": "Statistics",
-    "myCollections": "My Collections",
-    "myWorks": "My Works",
-    "myFavorites": "My Favorites"
+    "museum": {
+      "name": "Museum Name",
+      "description": "Description",
+      "address": "Address",
+      "contactEmail": "Contact Email",
+      "contactPhone": "Contact Phone",
+      "website": "Website",
+      "updateSuccess": "Profile updated successfully!",
+      "updateError": "Update failed, please try again"
+    },
+    "designer": {
+      "displayName": "Display Name",
+      "bio": "Bio",
+      "type": "Type",
+      "typeIndividual": "Individual Designer",
+      "typeTeam": "Design Team",
+      "typeSchool": "Student",
+      "organization": "Organization",
+      "portfolio": "Portfolio Link",
+      "updateSuccess": "Profile updated successfully!",
+      "updateError": "Update failed, please try again"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "collections": "Collections",
+      "works": "Works",
+      "favorites": "Favorites"
+    },
+    "stats": {
+      "totalCollections": "Total Collections",
+      "activeCollections": "Active",
+      "totalWorks": "Total Works",
+      "approvedWorks": "Approved",
+      "totalFavorites": "Favorites"
+    },
+    "noData": "No data",
+    "loading": "Loading..."
   },
   "auth": {
     "loginTitle": "Welcome to Heritage Reimagined",
@@ -329,45 +353,6 @@
     "relatedCollections": "Related Collections",
     "notFound": "Collection not found",
     "backToHome": "Back to Home"
-  },
-  "profile": {
-    "museum": {
-      "name": "Museum Name",
-      "description": "Description",
-      "address": "Address",
-      "contactEmail": "Contact Email",
-      "contactPhone": "Contact Phone",
-      "website": "Website",
-      "updateSuccess": "Profile updated successfully!",
-      "updateError": "Update failed, please try again"
-    },
-    "designer": {
-      "displayName": "Display Name",
-      "bio": "Bio",
-      "type": "Type",
-      "typeIndividual": "Individual Designer",
-      "typeTeam": "Design Team",
-      "typeSchool": "Student",
-      "organization": "Organization",
-      "portfolio": "Portfolio Link",
-      "updateSuccess": "Profile updated successfully!",
-      "updateError": "Update failed, please try again"
-    },
-    "tabs": {
-      "overview": "Overview",
-      "collections": "Collections",
-      "works": "Works",
-      "favorites": "Favorites"
-    },
-    "stats": {
-      "totalCollections": "Total Collections",
-      "activeCollections": "Active",
-      "totalWorks": "Total Works",
-      "approvedWorks": "Approved",
-      "totalFavorites": "Favorites"
-    },
-    "noData": "No data",
-    "loading": "Loading..."
   },
   "myWorks": {
     "title": "My Works Management",
@@ -538,15 +523,22 @@
         "designers": "Registered Designers",
         "collections": "Collection Projects",
         "prize": "Total Prize Pool"
-    },
-    "footer": {
-      "about": "About Us",
-      "contact": "Contact Us",
-      "terms": "Terms of Service",
-      "privacy": "Privacy Policy",
-      "help": "Help Center",
-      "copyright": "© 2026 Heritage Reimagined. All rights reserved."
+      },
+      "footer": {
+        "about": "About Us",
+        "contact": "Contact Us",
+        "terms": "Terms of Service",
+        "privacy": "Privacy Policy",
+        "help": "Help Center",
+        "copyright": "© 2026 Heritage Reimagined. All rights reserved."
       }
     }
+  },
+  "badge": {
+    "recruiting": "Recruiting",
+    "awarded": "Awarded",
+    "winner": "Winner",
+    "featured": "Featured",
+    "closed": "Closed"
   }
 }

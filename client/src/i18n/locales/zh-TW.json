@@ -247,19 +247,43 @@
     "feature3Desc": "高效的文創設計徵集與合作"
   },
   "profile": {
-    "title": "個人中心",
-    "editProfile": "編輯個人資料",
-    "basicInfo": "基本資訊",
-    "name": "姓名",
-    "email": "電子郵件",
-    "avatar": "頭像",
-    "uploadAvatar": "上傳頭像",
-    "changeAvatar": "更換頭像",
-    "saveChanges": "儲存修改",
-    "statistics": "數據統計",
-    "myCollections": "我的徵集",
-    "myWorks": "我的作品",
-    "myFavorites": "我的收藏"
+    "museum": {
+      "name": "博物館名稱",
+      "description": "簡介",
+      "address": "地址",
+      "contactEmail": "聯絡郵箱",
+      "contactPhone": "聯絡電話",
+      "website": "官方網站",
+      "updateSuccess": "資料更新成功！",
+      "updateError": "更新失敗，請重試"
+    },
+    "designer": {
+      "displayName": "顯示名稱",
+      "bio": "個人簡介",
+      "type": "類型",
+      "typeIndividual": "個人設計師",
+      "typeTeam": "設計團隊",
+      "typeSchool": "院校學生",
+      "organization": "所屬機構",
+      "portfolio": "作品集連結",
+      "updateSuccess": "資料更新成功！",
+      "updateError": "更新失敗，請重試"
+    },
+    "tabs": {
+      "overview": "概覽",
+      "collections": "徵集管理",
+      "works": "作品管理",
+      "favorites": "我的收藏"
+    },
+    "stats": {
+      "totalCollections": "總徵集數",
+      "activeCollections": "進行中",
+      "totalWorks": "總作品數",
+      "approvedWorks": "已通過",
+      "totalFavorites": "收藏數"
+    },
+    "noData": "暂無資料",
+    "loading": "載入中..."
   },
   "auth": {
     "loginTitle": "歡迎來到古韻新創",
@@ -329,45 +353,6 @@
     "relatedCollections": "相關徵集",
     "notFound": "徵集不存在",
     "backToHome": "返回首頁"
-  },
-  "profile": {
-    "museum": {
-      "name": "博物館名稱",
-      "description": "簡介",
-      "address": "地址",
-      "contactEmail": "聯絡郵箱",
-      "contactPhone": "聯絡電話",
-      "website": "官方網站",
-      "updateSuccess": "資料更新成功！",
-      "updateError": "更新失敗，請重試"
-    },
-    "designer": {
-      "displayName": "顯示名稱",
-      "bio": "個人簡介",
-      "type": "類型",
-      "typeIndividual": "個人設計師",
-      "typeTeam": "設計團隊",
-      "typeSchool": "院校學生",
-      "organization": "所屬機構",
-      "portfolio": "作品集連結",
-      "updateSuccess": "資料更新成功！",
-      "updateError": "更新失敗，請重試"
-    },
-    "tabs": {
-      "overview": "概覽",
-      "collections": "徵集管理",
-      "works": "作品管理",
-      "favorites": "我的收藏"
-    },
-    "stats": {
-      "totalCollections": "總徵集數",
-      "activeCollections": "進行中",
-      "totalWorks": "總作品數",
-      "approvedWorks": "已通過",
-      "totalFavorites": "收藏數"
-    },
-    "noData": "暂無資料",
-    "loading": "載入中..."
   },
   "myWorks": {
     "title": "我的作品管理",
@@ -538,15 +523,22 @@
         "designers": "註冊設計師",
         "collections": "徵集專案",
         "prize": "累計獎金"
-    },
-    "footer": {
-      "about": "關於我們",
-      "contact": "聯絡我們",
-      "terms": "服務條款",
-      "privacy": "隱私政策",
-      "help": "幫助中心",
-      "copyright": "© 2026 古韻新創. 保留所有權利"
+      },
+      "footer": {
+        "about": "關於我們",
+        "contact": "聯絡我們",
+        "terms": "服務條款",
+        "privacy": "隱私政策",
+        "help": "幫助中心",
+        "copyright": "© 2026 古韻新創. 保留所有權利"
       }
     }
+  },
+  "badge": {
+    "recruiting": "招募中",
+    "awarded": "已獲獎",
+    "winner": "優勝作品",
+    "featured": "精選",
+    "closed": "已截止"
   }
 }
