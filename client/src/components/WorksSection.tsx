@@ -108,20 +108,24 @@ export default function WorksSection() {
 
         {/* 瀑布流布局 */}
         {!isLoading && works && works.length > 0 && (
-        <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6">
-          {works.map((work: any, index: number) => (
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
+          {works.map((work: any, index: number) => {
+            // 为每张卡片分配不同高度，产生瀑布流错落感
+            const heights = ['h-56', 'h-72', 'h-64', 'h-80', 'h-60', 'h-76'];
+            const imgHeight = heights[index % heights.length];
+            return (
             <Link key={work.id} href={`/work/${work.id}`}>
             <div
               className="break-inside-avoid mb-6 reveal-animation cursor-pointer"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="group relative bg-card border border-border rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-500">
-                {/* 作品图片 */}
-                <div className="relative overflow-hidden">
+                {/* 作品图片 - 不同高度产生瀑布流效果 */}
+                <div className={`relative overflow-hidden ${imgHeight}`}>
                   <img
                     src={work.images ? JSON.parse(work.images)[0] : images.placeholder.design}
                     alt={work.title}
-                    className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   
                   {/* 获奖标记 */}
@@ -156,7 +160,8 @@ export default function WorksSection() {
               </div>
             </div>
             </Link>
-          ))}
+            );
+          })}
         </div>
         )}
 
