@@ -131,7 +131,29 @@
     "addTag": "Add Tag",
     "uploadSuccess": "Upload Successful",
     "submitSuccess": "Submit Successful",
-    "statusPending": "Pending Review"
+    "statusPending": "Pending Review",
+    "stats": {
+      "total": "Total",
+      "found": "Found",
+      "items": "works"
+    },
+    "filter": {
+      "keyword": "Keyword",
+      "status": "All Status",
+      "status.all": "All Status",
+      "status.submitted": "Pending",
+      "status.approved": "Approved",
+      "status.rejected": "Rejected",
+      "status.awarded": "Awarded"
+    },
+    "list": {
+      "title": "Works",
+      "subtitle": "Browse all creative works submitted by designers"
+    },
+    "search": {
+      "placeholder": "Search work title or description..."
+    },
+    "empty": "No works found"
   },
   "museum": {
     "title": "Museums",
@@ -539,6 +561,9 @@
     "awarded": "Awarded",
     "winner": "Winner",
     "featured": "Featured",
-    "closed": "Closed"
+    "closed": "Closed",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "submitted": "Pending"
   }
 }

@@ -102,7 +102,29 @@
     "addTag": "添加标签",
     "uploadSuccess": "上传成功",
     "submitSuccess": "提交成功",
-    "statusPending": "审核中"
+    "statusPending": "审核中",
+    "stats": {
+      "total": "共",
+      "found": "找到",
+      "items": "个作品"
+    },
+    "filter": {
+      "keyword": "关键词",
+      "status": "全部状态",
+      "status.all": "全部状态",
+      "status.submitted": "待审核",
+      "status.approved": "已通过",
+      "status.rejected": "未通过",
+      "status.awarded": "已获奖"
+    },
+    "list": {
+      "title": "作品展示",
+      "subtitle": "浏览所有设计师提交的文创作品"
+    },
+    "search": {
+      "placeholder": "搜索作品标题或描述..."
+    },
+    "empty": "暂无作品"
   },
   "museum": {
     "title": "博物馆",
@@ -529,6 +551,9 @@
     "awarded": "已获奖",
     "winner": "优胜作品",
     "featured": "精选",
-    "closed": "已截止"
+    "closed": "已截止",
+    "approved": "已通过",
+    "rejected": "未通过",
+    "submitted": "待审核"
   }
 }

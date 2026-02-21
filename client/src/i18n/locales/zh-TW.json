@@ -131,7 +131,29 @@
     "addTag": "添加標籤",
     "uploadSuccess": "上傳成功",
     "submitSuccess": "提交成功",
-    "statusPending": "審核中"
+    "statusPending": "審核中",
+    "stats": {
+      "total": "共",
+      "found": "找到",
+      "items": "個作品"
+    },
+    "filter": {
+      "keyword": "關鍵詞",
+      "status": "全部狀態",
+      "status.all": "全部狀態",
+      "status.submitted": "待審核",
+      "status.approved": "已通過",
+      "status.rejected": "未通過",
+      "status.awarded": "已獲獎"
+    },
+    "list": {
+      "title": "作品展示",
+      "subtitle": "瀏覽所有設計師提交的文創作品"
+    },
+    "search": {
+      "placeholder": "搜尋作品標題或描述..."
+    },
+    "empty": "暫無作品"
   },
   "museum": {
     "title": "博物館",
@@ -539,6 +561,9 @@
     "awarded": "已獲獎",
     "winner": "優勝作品",
     "featured": "精選",
-    "closed": "已截止"
+    "closed": "已截止",
+    "approved": "已通過",
+    "rejected": "未通過",
+    "submitted": "待審核"
   }
 }
