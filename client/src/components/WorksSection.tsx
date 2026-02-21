@@ -10,11 +10,13 @@ import { trpc } from '@/lib/trpc';
 import { Loader2 } from 'lucide-react';
 import { images } from '@/config/images';
 import { useEffect, useRef, useState, useCallback } from 'react';
+import { useLocation } from 'wouter';
 
 const PAGE_SIZE = 6;
 
 export default function WorksSection() {
   const { t } = useTranslation();
+  const [, setLocation] = useLocation();
 
   const [works, setWorks] = useState<any[]>([]);
   const [page, setPage] = useState(1);
@@ -174,10 +176,20 @@ export default function WorksSection() {
           {isFetchingMore && (
             <Loader2 className="w-6 h-6 animate-spin text-[#C8102E]" />
           )}
-          {!hasMore && works.length > 0 && (
-            <p className="text-sm text-muted-foreground">{t('section.works.noMore', '已展示全部作品')}</p>
-          )}
         </div>
+
+        {/* 查看更多作品按钮 */}
+        {works.length > 0 && (
+          <div className="flex justify-center mt-4">
+            <button
+              onClick={() => setLocation('/works')}
+              className="group relative px-10 py-3 border-2 border-[#C8102E] text-[#C8102E] font-medium tracking-widest text-sm hover:bg-[#C8102E] hover:text-white transition-all duration-300 overflow-hidden"
+            >
+              <span className="relative z-10">{t('section.works.viewMore')}</span>
+              <div className="absolute inset-0 bg-[#C8102E] translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
