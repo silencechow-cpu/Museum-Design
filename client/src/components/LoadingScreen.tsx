@@ -115,7 +115,7 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
 
         {/* 装饰性文字 */}
         <div className="text-xs text-muted-foreground/60 tracking-wider">
-          LOADING · 载入中 · 加載中
+          LOADING
         </div>
       </div>
     </div>
