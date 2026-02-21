@@ -124,7 +124,8 @@
     "search": {
       "placeholder": "搜索作品标题或描述..."
     },
-    "empty": "暂无作品"
+    "empty": "暂无作品",
+    "allLoaded": "已展示全部 {{total}} 个作品"
   },
   "museum": {
     "title": "博物馆",

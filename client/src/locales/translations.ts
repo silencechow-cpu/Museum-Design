@@ -112,6 +112,9 @@ export const translations: Record<Language, Record<string, string>> = {
     'work.sort.title': '按标题',
     'work.stats.found': '找到',
     'work.stats.items': '个作品',
+    'work.stats.total': '共',
+    'work.filter.keyword': '关键词',
+    'work.allLoaded': '已展示全部作品',
     'work.empty': '暂无符合条件的作品',
     'work.by': '作者',
     
@@ -364,6 +367,9 @@ export const translations: Record<Language, Record<string, string>> = {
     'work.sort.title': '按標題',
     'work.stats.found': '找到',
     'work.stats.items': '個作品',
+    'work.stats.total': '共',
+    'work.filter.keyword': '關鍵詞',
+    'work.allLoaded': '已展示全部作品',
     'work.empty': '暫無符合條件的作品',
     'work.by': '作者',
     
@@ -616,6 +622,9 @@ export const translations: Record<Language, Record<string, string>> = {
     'work.sort.title': 'By Title',
     'work.stats.found': 'Found',
     'work.stats.items': 'works',
+    'work.stats.total': 'Total',
+    'work.filter.keyword': 'Keyword',
+    'work.allLoaded': 'All works loaded',
     'work.empty': 'No works found',
     'work.by': 'By',
     

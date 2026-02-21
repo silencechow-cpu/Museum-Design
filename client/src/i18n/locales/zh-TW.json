@@ -153,7 +153,8 @@
     "search": {
       "placeholder": "搜尋作品標題或描述..."
     },
-    "empty": "暫無作品"
+    "empty": "暫無作品",
+    "allLoaded": "已展示全部 {{total}} 個作品"
   },
   "museum": {
     "title": "博物館",

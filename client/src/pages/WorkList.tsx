@@ -290,7 +290,7 @@ export default function WorkList() {
               )}
               {!isFetching && !hasMore && (
                 <div className="text-center text-sm text-muted-foreground">
-                  {t('work.stats.total')} {total} {t('work.stats.items')}
+                  {t('work.allLoaded')}
                 </div>
               )}
             </div>

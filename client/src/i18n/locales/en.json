@@ -153,7 +153,8 @@
     "search": {
       "placeholder": "Search work title or description..."
     },
-    "empty": "No works found"
+    "empty": "No works found",
+    "allLoaded": "All {{total}} works loaded"
   },
   "museum": {
     "title": "Museums",
