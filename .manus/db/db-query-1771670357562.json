@@ -1,0 +1,9 @@
+{
+  "query": "ALTER TABLE `ratings` ADD `targetType` enum('work','collection') NOT NULL DEFAULT 'work';\nALTER TABLE `ratings` ADD `targetId` int NOT NULL DEFAULT 0;\nUPDATE `ratings` SET `targetId` = `workId`, `targetType` = 'work' WHERE `workId` IS NOT NULL;\nALTER TABLE `ratings` DROP COLUMN `workId`;\nALTER TABLE `ratings` DROP COLUMN `museumId`;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4TcBHGDPBnmqT4p.root --database 5i6uYrDnGX53XRLr8WLVBx --execute ALTER TABLE `ratings` ADD `targetType` enum('work','collection') NOT NULL DEFAULT 'work';\nALTER TABLE `ratings` ADD `targetId` int NOT NULL DEFAULT 0;\nUPDATE `ratings` SET `targetId` = `workId`, `targetType` = 'work' WHERE `workId` IS NOT NULL;\nALTER TABLE `ratings` DROP COLUMN `workId`;\nALTER TABLE `ratings` DROP COLUMN `museumId`;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 6723
+}

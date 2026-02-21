@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE works SET images = '[\"/creative-products/product1.jpg\"]' WHERE id = 310519662973001693;\nUPDATE works SET images = '[\"/creative-products/product2.jpg\"]' WHERE id = 310519662973001694;\nUPDATE works SET images = '[\"/creative-products/product3.jpg\"]' WHERE id = 310519662973001695;\nUPDATE works SET images = '[\"/creative-products/product4.jpg\"]' WHERE id = 310519662973001696;\nUPDATE works SET images = '[\"/creative-products/product5.jpg\"]' WHERE id = 310519662973001697;\nUPDATE works SET images = '[\"/creative-products/product6.jpg\"]' WHERE id = 310519662973001698;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4TcBHGDPBnmqT4p.root --database 5i6uYrDnGX53XRLr8WLVBx --execute UPDATE works SET images = '[\"/creative-products/product1.jpg\"]' WHERE id = 310519662973001693;\nUPDATE works SET images = '[\"/creative-products/product2.jpg\"]' WHERE id = 310519662973001694;\nUPDATE works SET images = '[\"/creative-products/product3.jpg\"]' WHERE id = 310519662973001695;\nUPDATE works SET images = '[\"/creative-products/product4.jpg\"]' WHERE id = 310519662973001696;\nUPDATE works SET images = '[\"/creative-products/product5.jpg\"]' WHERE id = 310519662973001697;\nUPDATE works SET images = '[\"/creative-products/product6.jpg\"]' WHERE id = 310519662973001698;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 2608
+}

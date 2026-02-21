@@ -1,0 +1,12 @@
+# 古韵新创 - 博物馆文创对接平台
+# Robots.txt文件
+
+User-agent: *
+Allow: /
+
+# 允许所有搜索引擎爬取
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap位置（未来添加）
+# Sitemap: https://yourdomain.com/sitemap.xml

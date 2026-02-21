@@ -1,0 +1,253 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* 新中式数字主义设计系统 - 自定义颜色 */
+  --color-ink-black: oklch(0.06 0 0);
+  --color-paper-white: oklch(0.97 0.01 85);
+  --color-cinnabar-red: oklch(0.52 0.18 25);
+  --color-bronze-green: oklch(0.48 0.05 140);
+  --color-amber-gold: oklch(0.72 0.08 75);
+}
+
+/* 新中式数字主义设计系统 - 水墨意境配色 */
+:root {
+  --primary: var(--color-cinnabar-red);
+  --primary-foreground: var(--color-paper-white);
+  --sidebar-primary: var(--color-cinnabar-red);
+  --sidebar-primary-foreground: var(--color-paper-white);
+  --chart-1: var(--color-bronze-green);
+  --chart-2: var(--color-amber-gold);
+  --chart-3: var(--color-cinnabar-red);
+  --chart-4: oklch(0.35 0.02 280);
+  --chart-5: oklch(0.55 0.04 60);
+  --radius: 0.25rem;
+  --background: var(--color-paper-white);
+  --foreground: var(--color-ink-black);
+  --card: oklch(0.99 0.005 85);
+  --card-foreground: var(--color-ink-black);
+  --popover: oklch(0.99 0.005 85);
+  --popover-foreground: var(--color-ink-black);
+  --secondary: oklch(0.92 0.01 85);
+  --secondary-foreground: oklch(0.2 0.01 280);
+  --muted: oklch(0.94 0.01 85);
+  --muted-foreground: oklch(0.45 0.01 280);
+  --accent: var(--color-cinnabar-red);
+  --accent-foreground: var(--color-paper-white);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: var(--color-paper-white);
+  --border: oklch(0.88 0.01 85);
+  --input: oklch(0.88 0.01 85);
+  --ring: var(--color-cinnabar-red);
+  --sidebar: var(--color-paper-white);
+  --sidebar-foreground: var(--color-ink-black);
+  --sidebar-accent: oklch(0.94 0.01 85);
+  --sidebar-accent-foreground: var(--color-ink-black);
+  --sidebar-border: oklch(0.88 0.01 85);
+  --sidebar-ring: var(--color-cinnabar-red);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Noto Sans SC', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  /* 新中式数字主义 - 字体层级系统 */
+  h1, h2, h3 {
+    font-family: 'Noto Serif SC', 'Playfair Display', serif;
+    font-weight: 700;
+  }
+  
+  h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+  
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+  
+  /* 新中式数字主义 - 印章式标记 */
+  .seal-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--color-cinnabar-red);
+    color: var(--color-paper-white);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.125rem;
+    box-shadow: 0 2px 4px rgba(200, 16, 46, 0.3);
+  }
+  
+  /* 新中式数字主义 - 文物光晕效果 */
+  .artifact-glow {
+    box-shadow: 0 0 40px rgba(212, 165, 116, 0.4), 0 0 80px rgba(212, 165, 116, 0.2);
+  }
+  
+  /* 新中式数字主义 - 渐进揭示动画 */
+  @keyframes reveal-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .reveal-animation {
+    animation: reveal-up 0.8s ease-out forwards;
+  }
+  
+  /* 新中式数字主义 - 呼吸动效 */
+  @keyframes breathe {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.02);
+    }
+  }
+  
+  .breathe-animation {
+    animation: breathe 3s ease-in-out infinite;
+  }
+  
+  /* 新中式数字主义 - 慢速旋转动画 */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+  }
+  
+  /* 新中式数字主义 - 慢速脉冲动画 */
+  @keyframes ping-slow {
+    0%, 100% {
+      opacity: 0;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.3;
+      transform: scale(1.1);
+    }
+  }
+  
+  .animate-ping-slow {
+    animation: ping-slow 2s ease-in-out infinite;
+  }
+  
+  /* 新中式数字主义 - 光晕流动动画 */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(200%);
+    }
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s ease-in-out infinite;
+  }
+}

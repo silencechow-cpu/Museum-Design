@@ -1,0 +1,165 @@
+{
+  "collectionDetail": {
+    "back": "返回",
+    "notFound": "征集项目不存在",
+    "museum": "博物馆",
+    "artifact": "文物",
+    "description": "项目描述",
+    "fullDescription": "详细说明",
+    "requirements": "征集要求",
+    "prize": "奖金",
+    "prizeDetails": "奖项详情",
+    "deadline": "截止日期",
+    "timeRemaining": "剩余时间",
+    "days": "天",
+    "hours": "小时",
+    "minutes": "分钟",
+    "downloadMaterials": "下载素材",
+    "participate": "立即参与",
+    "relatedCollections": "相关征集",
+    "submittedWorks": "已提交作品",
+    "noWorks": "暂无作品",
+    "viewAllWorks": "查看全部作品"
+  },
+  "workDetail": {
+    "back": "返回",
+    "notFound": "作品不存在",
+    "designer": "设计师",
+    "collection": "所属征集",
+    "description": "作品说明",
+    "tags": "标签",
+    "status": "状态",
+    "relatedWorks": "相关作品"
+  },
+  "museumDetail": {
+    "back": "返回",
+    "notFound": "博物馆不存在",
+    "about": "关于博物馆",
+    "address": "地址",
+    "contact": "联系方式",
+    "website": "官方网站",
+    "activeCollections": "进行中的征集",
+    "noCollections": "暂无征集项目"
+  },
+  "designerDetail": {
+    "back": "返回",
+    "notFound": "设计师不存在",
+    "about": "关于设计师",
+    "skills": "技能标签",
+    "institution": "所属机构",
+    "portfolio": "作品集",
+    "noWorks": "暂无作品"
+  },
+  "collectionList": {
+    "title": "征集列表",
+    "description": "浏览所有博物馆文创征集项目，发现创意设计机会",
+    "searchPlaceholder": "搜索征集项目...",
+    "filterByMuseum": "按博物馆筛选",
+    "filterByPrize": "按奖金筛选",
+    "filterByStatus": "按状态筛选",
+    "sortBy": "排序方式",
+    "sortByTime": "按时间排序",
+    "sortByPrize": "按奖金排序",
+    "foundResults": "找到 {{count}} 个征集项目",
+    "noResults": "未找到征集项目",
+    "resetFilters": "清除筛选"
+  },
+  "workList": {
+    "title": "作品列表",
+    "description": "浏览所有创意作品",
+    "searchPlaceholder": "搜索作品...",
+    "filterByCollection": "按征集筛选",
+    "filterByDesigner": "按设计师筛选",
+    "filterByStatus": "按状态筛选",
+    "sortBy": "排序方式",
+    "foundResults": "找到 {{count}} 个作品",
+    "noResults": "未找到作品"
+  },
+  "museumList": {
+    "title": "博物馆列表",
+    "description": "探索全国各地的博物馆",
+    "searchPlaceholder": "搜索博物馆...",
+    "filterByProvince": "按省份筛选",
+    "sortBy": "排序方式",
+    "foundResults": "找到 {{count}} 个博物馆",
+    "noResults": "未找到博物馆"
+  },
+  "designerList": {
+    "title": "设计师列表",
+    "description": "发现优秀的设计师",
+    "searchPlaceholder": "搜索设计师...",
+    "filterByType": "按类型筛选",
+    "sortBy": "排序方式",
+    "foundResults": "找到 {{count}} 个设计师",
+    "noResults": "未找到设计师"
+  },
+  "profile": {
+    "title": "个人中心",
+    "basicInfo": "基本信息",
+    "editProfile": "编辑资料",
+    "myCollections": "我的征集",
+    "myWorks": "我的作品",
+    "myFavorites": "我的收藏",
+    "statistics": "数据统计",
+    "noCollections": "暂无征集项目",
+    "noWorks": "暂无作品",
+    "noFavorites": "暂无收藏"
+  },
+  "registrationGuide": {
+    "title": "欢迎来到古韵新创",
+    "subtitle": "请选择您的身份",
+    "museum": "博物馆",
+    "designer": "设计师",
+    "museumDescription": "发布文物征集项目，寻找优秀设计师",
+    "designerDescription": "参与征集项目，展示创意才华",
+    "continue": "继续",
+    "fillMuseumInfo": "填写博物馆信息",
+    "fillDesignerInfo": "填写设计师信息",
+    "submit": "提交"
+  },
+  "welcomeDialog": {
+    "title": "欢迎来到古韵新创！",
+    "greeting": "你好，{{name}}！",
+    "roleAssigned": "您已成功注册为{{role}}账号。",
+    "quickStart": "快速开始：",
+    "later": "稍后再说",
+    "complete": "完成资料"
+  },
+  "workSubmitForm": {
+    "title": "提交作品",
+    "workTitle": "作品标题",
+    "workDescription": "作品描述",
+    "uploadImages": "上传图片",
+    "tags": "标签",
+    "addTag": "添加标签",
+    "submit": "提交作品",
+    "cancel": "取消",
+    "draftSaved": "草稿已保存",
+    "submitSuccess": "提交成功"
+  },
+  "collectionEditPage": {
+    "title": "编辑征集项目",
+    "basicInfo": "基本信息",
+    "artifact": "文物",
+    "description": "项目描述",
+    "requirements": "征集要求",
+    "prize": "奖金",
+    "deadline": "截止日期",
+    "images": "项目图片",
+    "uploadImages": "上传图片",
+    "save": "保存",
+    "cancel": "取消",
+    "saveSuccess": "保存成功"
+  },
+  "loginPage": {
+    "title": "登录",
+    "subtitle": "欢迎回来",
+    "loginWithManus": "使用 Manus 登录",
+    "description": "支持邮箱、第三方账号等多种登录方式"
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "description": "抱歉，您访问的页面不存在",
+    "backToHome": "返回首页"
+  }
+}

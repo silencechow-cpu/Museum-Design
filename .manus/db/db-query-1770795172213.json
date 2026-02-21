@@ -1,0 +1,110 @@
+{
+  "query": "SELECT id, title, images FROM works ORDER BY id LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4TcBHGDPBnmqT4p.root --database 5i6uYrDnGX53XRLr8WLVBx --execute SELECT id, title, images FROM works ORDER BY id LIMIT 20;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "测试作品",
+      "images": "[\"/creative-products/product1.jpg\"]"
+    },
+    {
+      "id": "2",
+      "title": "完整字段测试作品",
+      "images": "[\"/creative-products/product2.jpg\"]"
+    },
+    {
+      "id": "3",
+      "title": "测试作品",
+      "images": "[\"/creative-products/product3.jpg\"]"
+    },
+    {
+      "id": "4",
+      "title": "完整字段测试作品",
+      "images": "[\"/creative-products/product4.jpg\"]"
+    },
+    {
+      "id": "30001",
+      "title": "测试作品",
+      "images": "[\"https://example.com/image1.jpg\"]"
+    },
+    {
+      "id": "30002",
+      "title": "完整字段测试作品",
+      "images": "[\"https://example.com/image1.jpg\",\"https://example.com/image2.jpg\"]"
+    },
+    {
+      "id": "30003",
+      "title": "测试作品",
+      "images": "[\"https://example.com/image1.jpg\"]"
+    },
+    {
+      "id": "30004",
+      "title": "青花瓷茶具设计",
+      "images": "[\"https://example.com/work1.jpg\"]"
+    },
+    {
+      "id": "30005",
+      "title": "完整字段测试作品",
+      "images": "[\"https://example.com/image1.jpg\",\"https://example.com/image2.jpg\"]"
+    },
+    {
+      "id": "30006",
+      "title": "测试作品",
+      "images": "[\"https://example.com/image1.jpg\"]"
+    },
+    {
+      "id": "30007",
+      "title": "完整字段测试作品",
+      "images": "[\"https://example.com/image1.jpg\",\"https://example.com/image2.jpg\"]"
+    },
+    {
+      "id": "30008",
+      "title": "测试作品1",
+      "images": "[]"
+    },
+    {
+      "id": "30009",
+      "title": "测试作品2",
+      "images": "[]"
+    },
+    {
+      "id": "60001",
+      "title": "测试作品",
+      "images": "[\"https://example.com/image1.jpg\"]"
+    },
+    {
+      "id": "60002",
+      "title": "测试作品2",
+      "images": "[]"
+    },
+    {
+      "id": "60003",
+      "title": "测试作品",
+      "images": "[\"https://example.com/image1.jpg\"]"
+    },
+    {
+      "id": "60004",
+      "title": "完整字段测试作品",
+      "images": "[\"https://example.com/image1.jpg\",\"https://example.com/image2.jpg\"]"
+    },
+    {
+      "id": "60005",
+      "title": "测试作品",
+      "images": "[\"https://example.com/image1.jpg\"]"
+    },
+    {
+      "id": "60006",
+      "title": "测试作品2",
+      "images": "[]"
+    },
+    {
+      "id": "60007",
+      "title": "测试作品",
+      "images": "[\"https://example.com/image1.jpg\"]"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\timages\n1\t测试作品\t[\"/creative-products/product1.jpg\"]\n2\t完整字段测试作品\t[\"/creative-products/product2.jpg\"]\n3\t测试作品\t[\"/creative-products/product3.jpg\"]\n4\t完整字段测试作品\t[\"/creative-products/product4.jpg\"]\n30001\t测试作品\t[\"https://example.com/image1.jpg\"]\n30002\t完整字段测试作品\t[\"https://example.com/image1.jpg\",\"https://example.com/image2.jpg\"]\n30003\t测试作品\t[\"https://example.com/image1.jpg\"]\n30004\t青花瓷茶具设计\t[\"https://example.com/work1.jpg\"]\n30005\t完整字段测试作品\t[\"https://example.com/image1.jpg\",\"https://example.com/image2.jpg\"]\n30006\t测试作品\t[\"https://example.com/image1.jpg\"]\n30007\t完整字段测试作品\t[\"https://example.com/image1.jpg\",\"https://example.com/image2.jpg\"]\n30008\t测试作品1\t[]\n30009\t测试作品2\t[]\n60001\t测试作品\t[\"https://example.com/image1.jpg\"]\n60002\t测试作品2\t[]\n60003\t测试作品\t[\"https://example.com/image1.jpg\"]\n60004\t完整字段测试作品\t[\"https://example.com/image1.jpg\",\"https://example.com/image2.jpg\"]\n60005\t测试作品\t[\"https://example.com/image1.jpg\"]\n60006\t测试作品2\t[]\n60007\t测试作品\t[\"https://example.com/image1.jpg\"]\n",
+  "stderr": "",
+  "execution_time_ms": 1542
+}

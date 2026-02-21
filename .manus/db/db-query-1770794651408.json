@@ -1,0 +1,50 @@
+{
+  "query": "SELECT id, artifactName FROM collections ORDER BY id LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4TcBHGDPBnmqT4p.root --database 5i6uYrDnGX53XRLr8WLVBx --execute SELECT id, artifactName FROM collections ORDER BY id LIMIT 10;",
+  "rows": [
+    {
+      "id": "1",
+      "artifactName": "测试文物"
+    },
+    {
+      "id": "2",
+      "artifactName": "测试文物"
+    },
+    {
+      "id": "30001",
+      "artifactName": "明代青花瓷"
+    },
+    {
+      "id": "30002",
+      "artifactName": "测试文物"
+    },
+    {
+      "id": "30003",
+      "artifactName": "商代青铜爵"
+    },
+    {
+      "id": "30004",
+      "artifactName": "测试文物"
+    },
+    {
+      "id": "30005",
+      "artifactName": "明代青花瓷"
+    },
+    {
+      "id": "30006",
+      "artifactName": "测试文物"
+    },
+    {
+      "id": "30007",
+      "artifactName": "测试文物1"
+    },
+    {
+      "id": "30008",
+      "artifactName": "测试文物2"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tartifactName\n1\t测试文物\n2\t测试文物\n30001\t明代青花瓷\n30002\t测试文物\n30003\t商代青铜爵\n30004\t测试文物\n30005\t明代青花瓷\n30006\t测试文物\n30007\t测试文物1\n30008\t测试文物2\n",
+  "stderr": "",
+  "execution_time_ms": 1516
+}

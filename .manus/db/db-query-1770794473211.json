@@ -1,0 +1,60 @@
+{
+  "query": "SELECT id, artifactName, images FROM collections LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4TcBHGDPBnmqT4p.root --database 5i6uYrDnGX53XRLr8WLVBx --execute SELECT id, artifactName, images FROM collections LIMIT 10;",
+  "rows": [
+    {
+      "id": "1",
+      "artifactName": "测试文物",
+      "images": "NULL"
+    },
+    {
+      "id": "2",
+      "artifactName": "测试文物",
+      "images": "NULL"
+    },
+    {
+      "id": "30001",
+      "artifactName": "明代青花瓷",
+      "images": "NULL"
+    },
+    {
+      "id": "30002",
+      "artifactName": "测试文物",
+      "images": "NULL"
+    },
+    {
+      "id": "30003",
+      "artifactName": "商代青铜爵",
+      "images": "NULL"
+    },
+    {
+      "id": "30004",
+      "artifactName": "测试文物",
+      "images": "NULL"
+    },
+    {
+      "id": "30005",
+      "artifactName": "明代青花瓷",
+      "images": "NULL"
+    },
+    {
+      "id": "30006",
+      "artifactName": "测试文物",
+      "images": "NULL"
+    },
+    {
+      "id": "30007",
+      "artifactName": "测试文物1",
+      "images": "NULL"
+    },
+    {
+      "id": "30008",
+      "artifactName": "测试文物2",
+      "images": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tartifactName\timages\n1\t测试文物\tNULL\n2\t测试文物\tNULL\n30001\t明代青花瓷\tNULL\n30002\t测试文物\tNULL\n30003\t商代青铜爵\tNULL\n30004\t测试文物\tNULL\n30005\t明代青花瓷\tNULL\n30006\t测试文物\tNULL\n30007\t测试文物1\tNULL\n30008\t测试文物2\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 1503
+}

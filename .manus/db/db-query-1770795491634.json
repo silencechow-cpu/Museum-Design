@@ -1,0 +1,202 @@
+{
+  "query": "SELECT id, artifactName, images, LENGTH(images) as img_length FROM collections ORDER BY id ASC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4TcBHGDPBnmqT4p.root --database 5i6uYrDnGX53XRLr8WLVBx --execute SELECT id, artifactName, images, LENGTH(images) as img_length FROM collections ORDER BY id ASC;",
+  "rows": [
+    {
+      "id": "1",
+      "artifactName": "测试文物",
+      "images": "[\"/artifacts/artifact1.jpg\"]",
+      "img_length": "28"
+    },
+    {
+      "id": "2",
+      "artifactName": "测试文物",
+      "images": "[\"/artifacts/artifact2.jpg\"]",
+      "img_length": "28"
+    },
+    {
+      "id": "30001",
+      "artifactName": "明代青花瓷",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "30002",
+      "artifactName": "测试文物",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "30003",
+      "artifactName": "商代青铜爵",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "30004",
+      "artifactName": "测试文物",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "30005",
+      "artifactName": "明代青花瓷",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "30006",
+      "artifactName": "测试文物",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "30007",
+      "artifactName": "测试文物1",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "30008",
+      "artifactName": "测试文物2",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "30009",
+      "artifactName": "测试文物3",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "30010",
+      "artifactName": "测试文物",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "30011",
+      "artifactName": "测试文物",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "30012",
+      "artifactName": "测试文物",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "60001",
+      "artifactName": "测试文物1",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "60002",
+      "artifactName": "测试文物2",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "60003",
+      "artifactName": "测试文物3",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "60004",
+      "artifactName": "测试文物",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "60005",
+      "artifactName": "测试文物1",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "60006",
+      "artifactName": "测试文物2",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "60007",
+      "artifactName": "测试文物3",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "60008",
+      "artifactName": "测试文物",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "90001",
+      "artifactName": "测试文物1",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "90002",
+      "artifactName": "测试文物2",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "90003",
+      "artifactName": "测试文物3",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "90004",
+      "artifactName": "测试文物",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "90005",
+      "artifactName": "测试文物",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "120001",
+      "artifactName": "测试文物",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "120002",
+      "artifactName": "测试文物1",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "120003",
+      "artifactName": "测试文物2",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "120004",
+      "artifactName": "测试文物3",
+      "images": "NULL",
+      "img_length": "NULL"
+    },
+    {
+      "id": "120005",
+      "artifactName": "测试文物",
+      "images": "NULL",
+      "img_length": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tartifactName\timages\timg_length\n1\t测试文物\t[\"/artifacts/artifact1.jpg\"]\t28\n2\t测试文物\t[\"/artifacts/artifact2.jpg\"]\t28\n30001\t明代青花瓷\tNULL\tNULL\n30002\t测试文物\tNULL\tNULL\n30003\t商代青铜爵\tNULL\tNULL\n30004\t测试文物\tNULL\tNULL\n30005\t明代青花瓷\tNULL\tNULL\n30006\t测试文物\tNULL\tNULL\n30007\t测试文物1\tNULL\tNULL\n30008\t测试文物2\tNULL\tNULL\n30009\t测试文物3\tNULL\tNULL\n30010\t测试文物\tNULL\tNULL\n30011\t测试文物\tNULL\tNULL\n30012\t测试文物\tNULL\tNULL\n60001\t测试文物1\tNULL\tNULL\n60002\t测试文物2\tNULL\tNULL\n60003\t测试文物3\tNULL\tNULL\n60004\t测试文物\tNULL\tNULL\n60005\t测试文物1\tNULL\tNULL\n60006\t测试文物2\tNULL\tNULL\n60007\t测试文物3\tNULL\tNULL\n60008\t测试文物\tNULL\tNULL\n90001\t测试文物1\tNULL\tNULL\n90002\t测试文物2\tNULL\tNULL\n90003\t测试文物3\tNULL\tNULL\n90004\t测试文物\tNULL\tNULL\n90005\t测试文物\tNULL\tNULL\n120001\t测试文物\tNULL\tNULL\n120002\t测试文物1\tNULL\tNULL\n120003\t测试文物2\tNULL\tNULL\n120004\t测试文物3\tNULL\tNULL\n120005\t测试文物\tNULL\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 1522
+}
