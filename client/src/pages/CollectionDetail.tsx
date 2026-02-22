@@ -4,7 +4,8 @@
  */
 
 import { useEffect, useState } from 'react';
-import { useRoute, Link } from 'wouter';
+import { useRoute, Link, useLocation } from 'wouter';
+import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -260,14 +261,16 @@ export default function CollectionDetail() {
     setTouchEnd(0);
   };
 
+  const [, setLocation] = useLocation();
+
   if (!collection) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-foreground mb-4">征集项目不存在</h2>
-          <Link href="/">
-            <a className="text-primary hover:underline">返回首页</a>
-          </Link>
+          <Button className="bg-[#C8102E] hover:bg-[#A00D24]" onClick={() => setLocation('/')}>
+            {t('workDetail.backToHome')}
+          </Button>
         </div>
       </div>
     );
@@ -287,12 +290,14 @@ export default function CollectionDetail() {
 
       {/* 面包屑导航 */}
       <div className="container pt-24 pb-8">
-        <Link href="/">
-          <a className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
-            <ArrowLeft className="w-4 h-4" />
-            返回首页
-          </a>
-        </Link>
+        <Button
+          variant="ghost"
+          onClick={() => setLocation('/')}
+          className="-ml-2 hover:bg-accent"
+        >
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          {t('workDetail.backToHome')}
+        </Button>
       </div>
 
       <div className="container pb-20">

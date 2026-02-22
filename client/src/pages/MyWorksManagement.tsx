@@ -29,13 +29,14 @@ import {
 } from '@/components/ui/select';
 import { Upload, Loader2, Trash2, Edit, Eye, Plus, X, Image as ImageIcon } from 'lucide-react';
 import { toast } from 'sonner';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
 export default function MyWorksManagement() {
   const { t } = useTranslation();
   const { user, isAuthenticated } = useAuth();
+  const [, setLocation] = useLocation();
   const [uploadDialogOpen, setUploadDialogOpen] = useState(false);
   const [editingWork, setEditingWork] = useState<any>(null);
   const [filterStatus, setFilterStatus] = useState<string>('all');
@@ -84,9 +85,9 @@ export default function MyWorksManagement() {
             <CardDescription>{t('myWorks.designerOnly')}</CardDescription>
           </CardHeader>
           <CardContent>
-            <Link href="/">
-              <Button>{t('myWorks.backToHome')}</Button>
-            </Link>
+            <Button className="bg-[#C8102E] hover:bg-[#A00D24]" onClick={() => setLocation('/')}>
+              {t('myWorks.backToHome')}
+            </Button>
           </CardContent>
         </Card>
       </div>
