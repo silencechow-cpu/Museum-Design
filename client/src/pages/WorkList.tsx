@@ -23,6 +23,8 @@ import WorkRatingDisplay from '@/components/WorkRatingDisplay';
 import { X } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 
 export default function WorkList() {
   const { t } = useLanguage();
@@ -121,8 +123,9 @@ export default function WorkList() {
   const activeFilters = getActiveFilters();
 
   return (
-    <div className="min-h-screen pt-24 pb-16">
-      <div className="container">
+    <div className="min-h-screen">
+      <Navigation />
+      <div className="container pt-24 pb-16">
         {/* 返回按钮 */}
         <Button
           variant="ghost"
@@ -297,6 +300,7 @@ export default function WorkList() {
           </>
         )}
       </div>
+      <Footer />
     </div>
   );
 }
