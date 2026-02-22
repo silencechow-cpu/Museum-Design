@@ -58,7 +58,7 @@ export default function RelatedCollections({ collectionId, limit = 6 }: RelatedC
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {relatedCollections.map((collection) => (
-            <Link key={collection.id} href={`/collections/${collection.id}`}>
+            <Link key={collection.id} href={`/collection/${collection.id}`}>
               <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer group">
                 <CardHeader>
                   <CardTitle className="text-xl group-hover:text-[#C8102E] transition-colors">
