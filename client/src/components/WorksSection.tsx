@@ -1,6 +1,6 @@
 /**
  * 新中式数字主义设计系统 - 设计作品展示
- * 采用瀑布流布局，首页展示固定 6 件作品
+ * 采用瀑布流布局（CSS columns 内联样式），首页展示固定 8 件作品
  * 使用印章纹理背景
  */
 
@@ -15,17 +15,16 @@ export default function WorksSection() {
   const { t } = useTranslation();
   const [, setLocation] = useLocation();
 
-  // 首页只加载前 6 件作品，不做无限滚动
+  // 首页只加载前 8 件作品，不做无限滚动
   const { data, isLoading } = trpc.work.search.useQuery(
-    { page: 1, pageSize: 6 },
+    { page: 1, pageSize: 8 },
     { enabled: true }
   );
 
   const works = data?.items ?? [];
-  const totalWorks = data?.total ?? 0;
 
-  // 高度数组，产生瀑布流错落感
-  const heights = ['h-56', 'h-72', 'h-64', 'h-80', 'h-60', 'h-76'];
+  // 高度数组（rem），产生瀑布流错落感
+  const heights = ['14rem', '18rem', '16rem', '20rem', '15rem', '19rem', '17rem', '21rem'];
 
   return (
     <section
@@ -65,20 +64,26 @@ export default function WorksSection() {
           </div>
         )}
 
-        {/* 瀑布流布局 */}
+        {/* 瀑布流布局 - 使用内联 CSS 确保样式在生产环境生效 */}
         {works.length > 0 && (
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
+          <>
+          <style>{`
+            .works-masonry { column-count: 2; column-gap: 1.5rem; }
+            @media (min-width: 768px) { .works-masonry { column-count: 3; } }
+            @media (min-width: 1280px) { .works-masonry { column-count: 4; } }
+          `}</style>
+          <div className="works-masonry">
             {works.map((work: any, index: number) => {
               const imgHeight = heights[index % heights.length];
               return (
                 <Link key={work.id} href={`/work/${work.id}`}>
                   <div
-                    className="break-inside-avoid mb-6 reveal-animation cursor-pointer"
-                    style={{ animationDelay: `${index * 0.1}s` }}
+                    className="reveal-animation cursor-pointer"
+                    style={{ breakInside: 'avoid', marginBottom: '1.5rem', animationDelay: `${index * 0.08}s` }}
                   >
                     <div className="group relative bg-card border border-border rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-500">
                       {/* 作品图片 - 不同高度产生瀑布流效果 */}
-                      <div className={`relative overflow-hidden ${imgHeight}`}>
+                      <div className="relative overflow-hidden" style={{ height: imgHeight }}>
                         <img
                           src={work.images ? JSON.parse(work.images)[0] : images.placeholder.design}
                           alt={work.title}
@@ -120,6 +125,7 @@ export default function WorksSection() {
               );
             })}
           </div>
+          </>
         )}
 
         {/* 查看更多作品按钮（有作品时始终显示） */}

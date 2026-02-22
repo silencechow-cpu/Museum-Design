@@ -162,9 +162,6 @@ export default function CollectionsSection() {
           </p>
         </div>
 
-        {/* 搜索和筛选 */}
-        <CollectionSearchFilter onSearch={handleSearch} />
-
         {/* 加载状态 */}
         {isLoading && (
           <div className="flex justify-center py-12">
