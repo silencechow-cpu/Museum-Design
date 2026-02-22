@@ -9,6 +9,7 @@ import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { registerSeedRoute } from "./seed-route";
 import { registerSeedExtraRoute } from "./seed-extra";
+import { registerSeedDownloadsRoute } from "./seed-downloads";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -40,6 +41,7 @@ async function startServer() {
   // Seed route (protected by SEED_SECRET)
   registerSeedRoute(app);
   registerSeedExtraRoute(app);
+  registerSeedDownloadsRoute(app);
   // tRPC API
   app.use(
     "/api/trpc",

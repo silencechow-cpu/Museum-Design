@@ -545,3 +545,5 @@ export function registerSeedExtraRoute(app: Router) {
     }
   });
 }
+
+// This is intentionally left empty - the update-downloads route is registered separately

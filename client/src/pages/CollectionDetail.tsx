@@ -375,28 +375,57 @@ export default function CollectionDetail() {
           <div className="reveal-animation" style={{ animationDelay: '0.2s' }}>
             <div className="bg-card border border-border rounded-lg p-6 sticky top-24">
               <h3 className="text-xl font-bold text-foreground mb-6">资料下载</h3>
-              {collection.downloadUrl ? (
-                <a
-                  href={collection.downloadUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-between p-4 bg-muted rounded-lg hover:bg-muted/80 transition-colors group"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <Download className="w-5 h-5 text-primary" />
-                    </div>
-                    <div className="text-left">
-                      <div className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
-                        下载征集资料包
-                      </div>
-                      <div className="text-xs text-muted-foreground">点击下载</div>
-                    </div>
+              {(() => {
+                // 尝试解析JSON格式的文件列表
+                let fileList: Array<{name: string; size: string; type: string; url: string}> = [];
+                if (collection.downloadUrl) {
+                  try {
+                    const parsed = JSON.parse(collection.downloadUrl);
+                    if (Array.isArray(parsed)) {
+                      fileList = parsed;
+                    } else {
+                      // 单个URL字符串，包装成列表
+                      fileList = [{ name: '下载征集资料包', size: '', type: 'zip', url: collection.downloadUrl }];
+                    }
+                  } catch {
+                    // 非JSON，当作普通URL
+                    fileList = [{ name: '下载征集资料包', size: '', type: 'zip', url: collection.downloadUrl }];
+                  }
+                }
+                if (fileList.length === 0) {
+                  return <p className="text-sm text-muted-foreground">暂无可下载资料</p>;
+                }
+                return (
+                  <div className="space-y-3">
+                    {fileList.map((file, idx) => (
+                      <a
+                        key={idx}
+                        href={file.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full flex items-center justify-between p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors group"
+                      >
+                        <div className="flex items-center gap-3 flex-1 min-w-0">
+                          <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            {file.type === 'pdf' ? (
+                              <svg className="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8.5 17.5h-1v-5h1.8c1.1 0 1.7.6 1.7 1.5 0 1-.7 1.5-1.8 1.5H8.5v2zm0-2.8h.7c.5 0 .8-.2.8-.7s-.3-.7-.8-.7H8.5v1.4zm4.5 2.8h-1.5v-5H13c1.6 0 2.5.9 2.5 2.5S14.6 17.5 13 17.5zm-.5-4v3h.4c.9 0 1.5-.5 1.5-1.5S13.8 13.5 12.9 13.5H12.5zm5 4h-1v-5h3v.8h-2v1.3h1.8v.8H14.5v2.1z"/></svg>
+                            ) : (
+                              <Download className="w-4 h-4 text-primary" />
+                            )}
+                          </div>
+                          <div className="text-left min-w-0">
+                            <div className="text-sm font-medium text-foreground group-hover:text-primary transition-colors truncate">
+                              {file.name}
+                            </div>
+                            {file.size && <div className="text-xs text-muted-foreground">{file.size}</div>}
+                          </div>
+                        </div>
+                        <Download className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 ml-2" />
+                      </a>
+                    ))}
                   </div>
-                </a>
-              ) : (
-                <p className="text-sm text-muted-foreground">暂无可下载资料</p>
-              )}
+                );
+              })()}
 
               <div className="mt-6 pt-6 border-t border-border">
                 <p className="text-xs text-muted-foreground">
