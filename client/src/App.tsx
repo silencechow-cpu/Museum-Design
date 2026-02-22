@@ -21,6 +21,7 @@ import MyWorksManagement from "./pages/MyWorksManagement";
 import Login from "./pages/Login";
 import EditProfile from "./pages/EditProfile";
 import AdminReviewWorks from "./pages/AdminReviewWorks";
+import AdminUsers from "./pages/AdminUsers";
 import EditCollection from "./pages/EditCollection";
 import LoadingScreen from "./components/LoadingScreen";
 import ScrollProgress from "./components/ScrollProgress";
@@ -49,6 +50,7 @@ function Router() {
       <Route path={"/login"} component={Login} />
       <Route path={"/edit-profile"} component={EditProfile} />
       <Route path={"/admin/review-works"} component={AdminReviewWorks} />
+      <Route path={"/admin/users"} component={AdminUsers} />
       <Route path={"/collections/:id/edit"} component={EditCollection} />
       <Route path={"/:rest*"} component={NotFound} />
     </Switch>

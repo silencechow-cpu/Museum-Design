@@ -86,6 +86,11 @@ export default function Navigation() {
             label: '审核管理',
             href: '/admin/review-works',
           },
+          {
+            icon: <ShieldCheck className="w-4 h-4" />,
+            label: '用户管理',
+            href: '/admin/users',
+          },
         ];
       default:
         // user 角色（未入驻）：引导完善资料

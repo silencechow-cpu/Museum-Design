@@ -11,6 +11,7 @@ import { statsRouter } from "./routers/stats";
 import { ratingRouter } from "./routers/rating";
 import { uploadRouter } from "./routers/upload";
 import { reviewRouter } from "./routers/review";
+import { userRouter } from "./routers/user";
 import { getMuseumByUserId, getDesignerByUserId, updateUserAvatar, updateUserSocialAccounts, getUserById, getDb } from "./db";
 import { users } from "../drizzle/schema";
 import { eq } from "drizzle-orm";
@@ -176,6 +177,7 @@ export const appRouter = router({
   rating: ratingRouter,
   upload: uploadRouter,
   review: reviewRouter,
+  user: userRouter,
 });
 
 export type AppRouter = typeof appRouter;

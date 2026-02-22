@@ -1050,3 +1050,214 @@ export async function deleteFavoriteByTarget(userId: number, targetType: "collec
   );
 }
 
+
+// ========== 用户管理（管理员专用）==========
+
+export interface ListUsersParams {
+  page?: number;
+  pageSize?: number;
+  keyword?: string;
+  role?: 'user' | 'admin' | 'museum' | 'designer';
+  sortBy?: 'createdAt' | 'lastSignedIn' | 'name';
+  sortOrder?: 'asc' | 'desc';
+}
+
+export interface ListUsersResult {
+  users: (typeof users.$inferSelect)[];
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+}
+
+/**
+ * 管理员获取用户列表（支持分页、关键词搜索、角色筛选、排序）
+ */
+export async function listUsers(params: ListUsersParams = {}): Promise<ListUsersResult> {
+  const db = await getDb();
+  if (!db) return { users: [], total: 0, page: 1, pageSize: 15, totalPages: 0 };
+
+  const {
+    page = 1,
+    pageSize = 15,
+    keyword,
+    role,
+    sortBy = 'createdAt',
+    sortOrder = 'desc',
+  } = params;
+
+  const offset = (page - 1) * pageSize;
+  const conditions = [];
+
+  // 关键词搜索：匹配 name 或 email
+  if (keyword && keyword.trim()) {
+    conditions.push(
+      or(
+        like(users.name, `%${keyword.trim()}%`),
+        like(users.email, `%${keyword.trim()}%`)
+      )
+    );
+  }
+
+  // 角色筛选
+  if (role) {
+    conditions.push(eq(users.role, role));
+  }
+
+  const where = conditions.length > 0 ? and(...conditions) : undefined;
+
+  // 构建排序规则
+  const orderByClause = (() => {
+    const col = sortBy === 'name'
+      ? users.name
+      : sortBy === 'lastSignedIn'
+        ? users.lastSignedIn
+        : users.createdAt;
+    return sortOrder === 'asc' ? asc(col) : desc(col);
+  })();
+
+  // 并行执行数据查询与总数查询，提升性能
+  const [rows, totalResult] = await Promise.all([
+    db
+      .select({
+        id: users.id,
+        name: users.name,
+        email: users.email,
+        avatar: users.avatar,
+        role: users.role,
+        authProvider: users.authProvider,
+        emailVerified: users.emailVerified,
+        createdAt: users.createdAt,
+        updatedAt: users.updatedAt,
+        lastSignedIn: users.lastSignedIn,
+        // 不返回 openId、passwordHash、socialAccounts 等敏感字段
+      })
+      .from(users)
+      .where(where)
+      .orderBy(orderByClause)
+      .limit(pageSize)
+      .offset(offset),
+    db.select({ value: count() }).from(users).where(where),
+  ]);
+
+  const total = totalResult[0]?.value ?? 0;
+
+  return {
+    users: rows as any,
+    total,
+    page,
+    pageSize,
+    totalPages: Math.ceil(total / pageSize),
+  };
+}
+
+/**
+ * 管理员通过 ID 获取单个用户详情（含关联的博物馆/设计师信息）
+ */
+export async function getUserDetailById(userId: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const userRow = await getUserById(userId);
+  if (!userRow) return undefined;
+
+  // 并行获取关联信息
+  const [museum, designer] = await Promise.all([
+    getMuseumByUserId(userId),
+    getDesignerByUserId(userId),
+  ]);
+
+  return {
+    ...userRow,
+    museum: museum ?? null,
+    designer: designer ?? null,
+  };
+}
+
+/**
+ * 管理员更新用户信息（支持修改 name、email、role）
+ * 注意：不允许通过此接口修改 openId、passwordHash 等核心认证字段
+ */
+export async function updateUserAsAdmin(
+  userId: number,
+  data: Partial<Pick<InsertUser, 'name' | 'email' | 'role'>>
+): Promise<(typeof users.$inferSelect) | undefined> {
+  const db = await getDb();
+  if (!db) throw new Error('数据库不可用');
+
+  // 确认用户存在
+  const existing = await getUserById(userId);
+  if (!existing) throw new Error('用户不存在');
+
+  // 防止将最后一个 admin 的角色降级
+  if (existing.role === 'admin' && data.role && data.role !== 'admin') {
+    const adminCountResult = await db
+      .select({ value: count() })
+      .from(users)
+      .where(eq(users.role, 'admin'));
+    const adminCount = adminCountResult[0]?.value ?? 0;
+    if (adminCount <= 1) {
+      throw new Error('系统中至少需要保留一个管理员账号，无法降级');
+    }
+  }
+
+  await db
+    .update(users)
+    .set({ ...data, updatedAt: new Date() })
+    .where(eq(users.id, userId));
+
+  return getUserById(userId);
+}
+
+/**
+ * 管理员删除用户（软删除：将角色置为 user 并清空 email，保留记录用于审计）
+ * 如需硬删除，可直接调用 db.delete(users).where(eq(users.id, userId))
+ */
+export async function deleteUserAsAdmin(userId: number): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error('数据库不可用');
+
+  const existing = await getUserById(userId);
+  if (!existing) throw new Error('用户不存在');
+
+  // 防止删除最后一个 admin
+  if (existing.role === 'admin') {
+    const adminCountResult = await db
+      .select({ value: count() })
+      .from(users)
+      .where(eq(users.role, 'admin'));
+    const adminCount = adminCountResult[0]?.value ?? 0;
+    if (adminCount <= 1) {
+      throw new Error('系统中至少需要保留一个管理员账号，无法删除');
+    }
+  }
+
+  // 硬删除
+  await db.delete(users).where(eq(users.id, userId));
+}
+
+/**
+ * 获取用户统计概览（管理员仪表盘用）
+ */
+export async function getUserStats() {
+  const db = await getDb();
+  if (!db) return { total: 0, byRole: {} };
+
+  const [total, byRole] = await Promise.all([
+    db.select({ value: count() }).from(users),
+    db
+      .select({ role: users.role, value: count() })
+      .from(users)
+      .groupBy(users.role),
+  ]);
+
+  const roleMap: Record<string, number> = {};
+  for (const row of byRole) {
+    roleMap[row.role] = row.value;
+  }
+
+  return {
+    total: total[0]?.value ?? 0,
+    byRole: roleMap,
+  };
+}
