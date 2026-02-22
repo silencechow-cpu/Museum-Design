@@ -198,7 +198,7 @@ export default function MyWorksManagement() {
 
                     {/* 操作按钮 */}
                     <div className="flex gap-2">
-                      <Link href={`/works/${work.id}`} className="flex-1">
+                      <Link href={`/work/${work.id}`} className="flex-1">
                         <Button variant="outline" size="sm" className="w-full gap-2">
                           <Eye className="w-4 h-4" />
                           {t('myWorks.view')}

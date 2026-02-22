@@ -61,7 +61,7 @@ export default function RelatedWorks({ workId, limit = 6 }: RelatedWorksProps) {
             const statusLabel = statusLabels[work.status] || { text: work.status, color: "bg-gray-500" };
 
             return (
-              <Link key={work.id} href={`/works/${work.id}`}>
+              <Link key={work.id} href={`/work/${work.id}`}>
                 <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group">
                   {/* 作品封面 */}
                   <div className="relative aspect-[4/3] overflow-hidden">

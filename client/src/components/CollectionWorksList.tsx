@@ -107,7 +107,7 @@ export default function CollectionWorksList({ collectionId }: CollectionWorksLis
       {/* 作品网格 */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {data.works.map((work: any) => (
-          <Link key={work.id} href={`/works/${work.id}`}>
+          <Link key={work.id} href={`/work/${work.id}`}>
             <div className="group cursor-pointer bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300">
               {/* 作品图片 */}
               <div className="relative aspect-square overflow-hidden bg-muted">
