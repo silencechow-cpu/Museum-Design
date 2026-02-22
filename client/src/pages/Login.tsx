@@ -19,6 +19,14 @@ export default function Login() {
   // 直接读取浏览器 URL 参数，兼容 wouter 路由
   const role = new URLSearchParams(window.location.search).get('role'); // 'museum' | 'designer' | null
 
+  // P1-B：页面加载时将 role 参数写入 sessionStorage
+  // OAuth 回调后 Onboarding 页面读取该字段并自动预选角色，跳过手动选择步骤
+  useEffect(() => {
+    if (role === 'museum' || role === 'designer') {
+      sessionStorage.setItem('preselected_role', role);
+    }
+  }, [role]);
+
   // 如果已登录，重定向到首页
   useEffect(() => {
     if (isAuthenticated && !loading) {

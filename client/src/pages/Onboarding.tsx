@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { trpc } from "@/lib/trpc";
 import { Building2, Palette, CheckCircle2 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { toast } from "sonner";
 
@@ -18,6 +18,18 @@ export default function Onboarding() {
   const [, setLocation] = useLocation();
   const [step, setStep] = useState<"select" | "form" | "complete">("select");
   const [userType, setUserType] = useState<UserType>(null);
+
+  // P1-B：读取 sessionStorage 中由 Login 页面写入的预选角色
+  // 如果存在，自动跳过选择步骤直接进入填写表单
+  useEffect(() => {
+    if (loading || !user) return;
+    const preselected = sessionStorage.getItem('preselected_role') as UserType;
+    if (preselected === 'museum' || preselected === 'designer') {
+      sessionStorage.removeItem('preselected_role'); // 清除，避免重复触发
+      setUserType(preselected);
+      setStep('form');
+    }
+  }, [loading, user]);
 
   // 博物馆表单状态
   const [museumForm, setMuseumForm] = useState({
