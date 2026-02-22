@@ -5,7 +5,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { getLoginUrl } from "@/const";
+import { getLoginUrl, getRegisterUrl, getForgotPasswordUrl } from "@/const";
 import { LogIn, Mail, Smartphone, Shield, Building2, Palette, ArrowLeft } from "lucide-react";
 import { useEffect } from "react";
 import { useLocation, Link } from "wouter";
@@ -92,6 +92,22 @@ export default function Login() {
             <LogIn className="mr-2 h-6 w-6" />
             {t('login.loginButton')}
           </Button>
+
+          {/* 注册 & 忘记密码 */}
+          <div className="flex items-center justify-between text-sm">
+            <button
+              onClick={() => window.location.href = getForgotPasswordUrl()}
+              className="text-gray-500 hover:text-[#C8102E] transition-colors duration-200"
+            >
+              忘记密码？
+            </button>
+            <button
+              onClick={() => window.location.href = getRegisterUrl()}
+              className="text-[#C8102E] font-medium hover:text-[#A00D24] transition-colors duration-200"
+            >
+              还没有账号？立即注册
+            </button>
+          </div>
 
           {/* 登录方式说明 */}
           <div className="border-t pt-6">
