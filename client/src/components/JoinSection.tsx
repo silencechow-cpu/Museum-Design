@@ -6,9 +6,11 @@
 
 import { useTranslation } from 'react-i18next';
 import { Building2, Palette } from 'lucide-react';
+import { useLocation } from 'wouter';
 
 export default function JoinSection() {
   const { t } = useTranslation();
+  const [, setLocation] = useLocation();
 
   return (
     <section id="join" className="relative py-32 bg-gradient-to-b from-background to-muted">
@@ -67,14 +69,17 @@ export default function JoinSection() {
                 </ul>
 
                 {/* 按钮 */}
-                <button className="w-full py-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+                <button
+                  onClick={() => setLocation('/login?role=museum')}
+                  className="w-full py-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                >
                   {t('section.join.cta')}
                 </button>
               </div>
             </div>
           </div>
 
-          {/* 设计师入驻 */}
+          {/* 设计师入驻 */
           <div className="group relative reveal-animation" style={{ animationDelay: '0.2s' }}>
             <div className="relative h-full bg-card border-2 border-border rounded-2xl p-10 hover:border-primary transition-all duration-500 hover:shadow-2xl overflow-hidden">
               {/* 装饰性背景图案 */}
@@ -119,7 +124,10 @@ export default function JoinSection() {
                 </ul>
 
                 {/* 按钮 */}
-                <button className="w-full py-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+                <button
+                  onClick={() => setLocation('/login?role=designer')}
+                  className="w-full py-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                >
                   {t('section.join.cta')}
                 </button>
               </div>

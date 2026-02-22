@@ -6,9 +6,9 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getLoginUrl } from "@/const";
-import { LogIn, Mail, Smartphone, Shield } from "lucide-react";
+import { LogIn, Mail, Smartphone, Shield, Building2, Palette } from "lucide-react";
 import { useEffect } from "react";
-import { useLocation } from "wouter";
+import { useLocation, useSearch } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { useTranslation } from "react-i18next";
 
@@ -16,6 +16,9 @@ export default function Login() {
   const { t } = useTranslation();
   const [, setLocation] = useLocation();
   const { isAuthenticated, loading } = useAuth();
+  const search = useSearch();
+  const params = new URLSearchParams(search);
+  const role = params.get('role'); // 'museum' | 'designer' | null
 
   // 如果已登录，重定向到首页
   useEffect(() => {
@@ -43,6 +46,22 @@ export default function Login() {
           {t('login.appSlogan')}
         </p>
       </div>
+
+      {/* 角色欢迎提示（来自 JoinSection 跳转时显示） */}
+      {role && (
+        <div className="w-full max-w-md mb-4 flex items-center gap-3 px-4 py-3 rounded-xl bg-[#C8102E]/10 border border-[#C8102E]/20">
+          {role === 'museum' ? (
+            <Building2 className="h-5 w-5 text-[#C8102E] flex-shrink-0" />
+          ) : (
+            <Palette className="h-5 w-5 text-[#C8102E] flex-shrink-0" />
+          )}
+          <p className="text-sm text-[#C8102E] font-medium">
+            {role === 'museum'
+              ? '欢迎博物馆入驻！登录后即可发布征集项目'
+              : '欢迎设计师加入！登录后即可参与文创设计征集'}
+          </p>
+        </div>
+      )}
 
       {/* 登录卡片 */}
       <Card className="w-full max-w-md shadow-xl">
