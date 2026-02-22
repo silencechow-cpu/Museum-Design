@@ -8,6 +8,7 @@ import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { registerSeedRoute } from "./seed-route";
+import { registerSeedExtraRoute } from "./seed-extra";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -38,6 +39,7 @@ async function startServer() {
   registerOAuthRoutes(app);
   // Seed route (protected by SEED_SECRET)
   registerSeedRoute(app);
+  registerSeedExtraRoute(app);
   // tRPC API
   app.use(
     "/api/trpc",
