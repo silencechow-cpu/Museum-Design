@@ -27,7 +27,7 @@ export default function Login() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-50 via-white to-amber-50">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#C8102E]"></div>
       </div>
     );
   }
@@ -57,7 +57,7 @@ export default function Login() {
           <Button
             onClick={() => window.location.href = getLoginUrl()}
             size="lg"
-            className="w-full h-14 text-lg font-semibold bg-red-600 hover:bg-red-700"
+            className="w-full h-14 text-lg font-semibold bg-[#C8102E] hover:bg-[#A00D24]"
           >
             <LogIn className="mr-2 h-6 w-6" />
             {t('login.loginButton')}
@@ -70,17 +70,17 @@ export default function Login() {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="flex flex-col items-center text-center p-3 bg-gray-50 rounded-lg">
-                <Mail className="h-8 w-8 text-red-600 mb-2" />
+                <Mail className="h-8 w-8 text-[#C8102E] mb-2" />
                 <span className="text-sm font-medium">{t('login.emailLogin')}</span>
                 <span className="text-xs text-gray-500 mt-1">{t('login.quickRegister')}</span>
               </div>
               <div className="flex flex-col items-center text-center p-3 bg-gray-50 rounded-lg">
-                <Smartphone className="h-8 w-8 text-red-600 mb-2" />
+                <Smartphone className="h-8 w-8 text-[#C8102E] mb-2" />
                 <span className="text-sm font-medium">{t('login.thirdPartyLogin')}</span>
                 <span className="text-xs text-gray-500 mt-1">{t('login.wechatQQ')}</span>
               </div>
               <div className="flex flex-col items-center text-center p-3 bg-gray-50 rounded-lg">
-                <Shield className="h-8 w-8 text-red-600 mb-2" />
+                <Shield className="h-8 w-8 text-[#C8102E] mb-2" />
                 <span className="text-sm font-medium">{t('login.secure')}</span>
                 <span className="text-xs text-gray-500 mt-1">{t('login.encrypted')}</span>
               </div>
@@ -90,11 +90,11 @@ export default function Login() {
           {/* 用户协议 */}
           <p className="text-xs text-gray-500 text-center">
             {t('login.agreementPrefix')}
-            <a href="/terms" className="text-red-600 hover:underline mx-1">
+            <a href="/terms" className="text-[#C8102E] hover:underline mx-1">
               {t('login.termsOfService')}
             </a>
             {t('login.and')}
-            <a href="/privacy" className="text-red-600 hover:underline mx-1">
+            <a href="/privacy" className="text-[#C8102E] hover:underline mx-1">
               {t('login.privacyPolicy')}
             </a>
           </p>

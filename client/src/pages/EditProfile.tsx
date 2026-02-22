@@ -203,7 +203,7 @@ export default function EditProfile() {
               <Button
                 type="submit"
                 disabled={updateProfileMutation.isPending || uploadAvatarMutation.isPending}
-                className="flex-1 h-12 bg-red-600 hover:bg-red-700"
+                className="flex-1 h-12 bg-[#C8102E] hover:bg-[#A00D24]"
               >
                 {updateProfileMutation.isPending || uploadAvatarMutation.isPending ? (
                   <>
