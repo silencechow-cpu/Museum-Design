@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { images } from '@/config/images';
+import { useLocation } from 'wouter';
 
 // 使用配置文件中的横幅图片数据
 const bannerSlides = images.heroBanners.map((banner, index) => ({
@@ -18,6 +19,7 @@ const bannerSlides = images.heroBanners.map((banner, index) => ({
 }));
 
 export default function HeroBanner() {
+  const [, setLocation] = useLocation();
   const { t, i18n } = useTranslation();
   const language = i18n.language as 'zh-CN' | 'zh-TW' | 'en';
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -71,7 +73,10 @@ export default function HeroBanner() {
             <p className="text-xl md:text-2xl text-paper-white/90 mb-8 font-serif">
               {bannerSlides[currentSlide].subtitle[language]}
             </p>
-            <button className="px-8 py-3 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+            <button
+              onClick={() => setLocation('/collections')}
+              className="px-8 py-3 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+            >
               {t('hero.cta')}
             </button>
           </div>
