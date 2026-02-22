@@ -121,7 +121,7 @@ export default function CollectionRating({ collectionId }: CollectionRatingProps
               <Button
                 onClick={handleSubmitRating}
                 disabled={tempRating === 0 || createOrUpdateRating.isPending}
-                className="bg-[#c1272d] hover:bg-[#a01f24]"
+                className="bg-[#C8102E] hover:bg-[#A00D24]"
               >
                 {createOrUpdateRating.isPending
                   ? '提交中...'

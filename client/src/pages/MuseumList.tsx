@@ -161,7 +161,7 @@ export default function MuseumList() {
                     className="pl-10"
                   />
                 </div>
-                <Button onClick={handleSearch} className="bg-[#c1272d] hover:bg-[#a01f24]">
+                <Button onClick={handleSearch} className="bg-[#C8102E] hover:bg-[#A00D24]">
                   {t('common.search')}
                 </Button>
               </div>
@@ -238,7 +238,7 @@ export default function MuseumList() {
         {/* 初始加载状态 */}
         {isLoading && page === 1 ? (
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#c1272d]"></div>
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#C8102E]"></div>
             <p className="mt-4 text-gray-600">{t('common.loading')}</p>
           </div>
         ) : allMuseums.length === 0 ? (
@@ -261,7 +261,7 @@ export default function MuseumList() {
                             className="w-16 h-16 rounded-lg object-cover"
                           />
                         ) : (
-                          <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-[#c1272d] to-[#8b4513] flex items-center justify-center">
+                          <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-[#C8102E] to-[#8b4513] flex items-center justify-center">
                             <Building2 className="h-8 w-8 text-white" />
                           </div>
                         )}
