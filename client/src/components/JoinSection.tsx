@@ -79,7 +79,7 @@ export default function JoinSection() {
             </div>
           </div>
 
-          {/* 设计师入驻 */
+          {/* 设计师入驻 */}
           <div className="group relative reveal-animation" style={{ animationDelay: '0.2s' }}>
             <div className="relative h-full bg-card border-2 border-border rounded-2xl p-10 hover:border-primary transition-all duration-500 hover:shadow-2xl overflow-hidden">
               {/* 装饰性背景图案 */}
