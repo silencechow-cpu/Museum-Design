@@ -6,9 +6,9 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getLoginUrl } from "@/const";
-import { LogIn, Mail, Smartphone, Shield, Building2, Palette } from "lucide-react";
+import { LogIn, Mail, Smartphone, Shield, Building2, Palette, ArrowLeft } from "lucide-react";
 import { useEffect } from "react";
-import { useLocation } from "wouter";
+import { useLocation, Link } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { useTranslation } from "react-i18next";
 
@@ -36,11 +36,23 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-red-50 via-white to-amber-50 p-4">
-      {/* Logo和标题 */}
+      {/* 左上角返回首页按钮 */}
+      <div className="absolute top-4 left-4">
+        <Link href="/">
+          <Button variant="ghost" className="flex items-center gap-2 text-gray-600 hover:text-gray-900">
+            <ArrowLeft className="h-4 w-4" />
+            返回首页
+          </Button>
+        </Link>
+      </div>
+
+      {/* Logo和标题（可点击返回首页） */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
-          {t('login.appName')}
-        </h1>
+        <Link href="/">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2 cursor-pointer hover:text-[#C8102E] transition-colors duration-200">
+            {t('login.appName')}
+          </h1>
+        </Link>
         <p className="text-lg md:text-xl text-gray-600">
           {t('login.appSlogan')}
         </p>
