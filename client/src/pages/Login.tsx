@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { getLoginUrl } from "@/const";
 import { LogIn, Mail, Smartphone, Shield, Building2, Palette } from "lucide-react";
 import { useEffect } from "react";
-import { useLocation, useSearch } from "wouter";
+import { useLocation } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { useTranslation } from "react-i18next";
 
@@ -16,9 +16,8 @@ export default function Login() {
   const { t } = useTranslation();
   const [, setLocation] = useLocation();
   const { isAuthenticated, loading } = useAuth();
-  const search = useSearch();
-  const params = new URLSearchParams(search);
-  const role = params.get('role'); // 'museum' | 'designer' | null
+  // 直接读取浏览器 URL 参数，兼容 wouter 路由
+  const role = new URLSearchParams(window.location.search).get('role'); // 'museum' | 'designer' | null
 
   // 如果已登录，重定向到首页
   useEffect(() => {
