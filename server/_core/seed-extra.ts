@@ -140,7 +140,7 @@ export function registerSeedExtraRoute(app: Router) {
 
       // ============ 新增征集项目 ============
       log("📋 创建新征集项目...");
-      const futureDate = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+      const futureDate = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().slice(0, 19).replace('T', ' ');
       const newCollections = [
         {
           museumId: newMuseumIds[0],
@@ -149,9 +149,9 @@ export function registerSeedExtraRoute(app: Router) {
           artifactName: "南朝砖画·竹林七贤与荣启期",
           artifactDescription: "南朝时期砖画，描绘竹林七贤与荣启期共九人席地而坐、各具情态的场景，是中国早期人物画的杰出代表。",
           images: JSON.stringify(["https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=800&h=600&fit=crop"]),
-          prize: 60000,
+          prize: "¥60,000",
+          prizeAmount: 60000,
           deadline: futureDate,
-          maxSubmissions: 100,
           status: "active",
         },
         {
@@ -161,9 +161,9 @@ export function registerSeedExtraRoute(app: Router) {
           artifactName: "越窑秘色瓷八棱净瓶",
           artifactDescription: "唐代越窑精品，釉色青翠如玉，造型优雅，是越窑青瓷的代表作品，被誉为'千峰翠色'。",
           images: JSON.stringify(["https://images.unsplash.com/photo-1565967511849-76a60a516170?w=800&h=600&fit=crop"]),
-          prize: 45000,
+          prize: "¥45,000",
+          prizeAmount: 45000,
           deadline: futureDate,
-          maxSubmissions: 80,
           status: "active",
         },
         {
@@ -173,9 +173,9 @@ export function registerSeedExtraRoute(app: Router) {
           artifactName: "马王堆汉墓T形帛画",
           artifactDescription: "西汉时期帛画，描绘天上、人间、地下三界的宏大图景，色彩鲜艳，构图精妙，是汉代绘画艺术的巅峰之作。",
           images: JSON.stringify(["https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=800&h=600&fit=crop"]),
-          prize: 70000,
+          prize: "¥70,000",
+          prizeAmount: 70000,
           deadline: futureDate,
-          maxSubmissions: 120,
           status: "active",
         },
         {
@@ -185,9 +185,9 @@ export function registerSeedExtraRoute(app: Router) {
           artifactName: "三星堆青铜纵目面具",
           artifactDescription: "商代晚期青铜器，面具造型夸张神秘，双目突出，耳翼宽大，是三星堆文化最具代表性的文物之一。",
           images: JSON.stringify(["https://images.unsplash.com/photo-1564399580075-5dfe19c205f1?w=800&h=600&fit=crop"]),
-          prize: 80000,
+          prize: "¥80,000",
+          prizeAmount: 80000,
           deadline: futureDate,
-          maxSubmissions: 150,
           status: "active",
         },
         {
@@ -197,9 +197,9 @@ export function registerSeedExtraRoute(app: Router) {
           artifactName: "清代御题端砚",
           artifactDescription: "清代宫廷御用端砚，石质细腻，砚面刻有御题诗文，雕工精湛，是端砚中的极品，代表了岭南砚雕艺术的最高水准。",
           images: JSON.stringify(["https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=800&h=600&fit=crop"]),
-          prize: 40000,
+          prize: "¥40,000",
+          prizeAmount: 40000,
           deadline: futureDate,
-          maxSubmissions: 80,
           status: "active",
         },
         {
@@ -209,9 +209,9 @@ export function registerSeedExtraRoute(app: Router) {
           artifactName: "明代妆花缎龙袍料",
           artifactDescription: "明代宫廷织造，以妆花工艺织就，金线绣龙，色彩富丽堂皇，是南京云锦工艺的代表作品，展现了明代宫廷织造的最高水准。",
           images: JSON.stringify(["https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=800&h=600&fit=crop"]),
-          prize: 55000,
+          prize: "¥55,000",
+          prizeAmount: 55000,
           deadline: futureDate,
-          maxSubmissions: 100,
           status: "active",
         },
       ];
@@ -225,8 +225,8 @@ export function registerSeedExtraRoute(app: Router) {
           log(`  ✓ 征集已存在: ${c.title}`);
         } else {
           const [result] = await connection.execute(
-            "INSERT INTO collections (museumId, title, description, artifactName, artifactDescription, images, prize, deadline, maxSubmissions, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-            [c.museumId, c.title, c.description, c.artifactName, c.artifactDescription, c.images, c.prize, c.deadline, c.maxSubmissions, c.status]
+            "INSERT INTO collections (museumId, title, description, artifactName, artifactDescription, images, prize, prizeAmount, deadline, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            [c.museumId, c.title, c.description, c.artifactName, c.artifactDescription, c.images, c.prize, c.prizeAmount, c.deadline, c.status]
           ) as any;
           newCollectionIds.push(result.insertId);
           log(`  ✓ 创建征集: ${c.title} (id=${result.insertId})`);
