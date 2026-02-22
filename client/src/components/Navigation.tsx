@@ -83,11 +83,6 @@ export default function Navigation() {
                   {t('nav.museums')}
                 </span>
               </Link>
-              <Link href="/works">
-                <span className="text-sm font-medium text-foreground hover:text-primary transition-colors cursor-pointer">
-                  {t('nav.works')}
-                </span>
-              </Link>
               <Link href="/designers">
                 <span className="text-sm font-medium text-foreground hover:text-primary transition-colors cursor-pointer">
                   {t('nav.designers')}
@@ -173,14 +168,6 @@ export default function Navigation() {
                   className="block py-2 text-sm font-medium text-foreground hover:text-primary transition-colors cursor-pointer"
                 >
                   {t('nav.museums')}
-                </span>
-              </Link>
-              <Link href="/works">
-                <span
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block py-2 text-sm font-medium text-foreground hover:text-primary transition-colors cursor-pointer"
-                >
-                  {t('nav.works')}
                 </span>
               </Link>
               <Link href="/designers">
