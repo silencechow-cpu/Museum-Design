@@ -1,6 +1,6 @@
 /**
  * 新中式数字主义设计系统 - 设计作品展示
- * 采用瀑布流布局 + 无限滚动加载
+ * 采用瀑布流布局，首页展示固定 6 件作品
  * 使用印章纹理背景
  */
 
@@ -9,69 +9,20 @@ import { Link } from 'wouter';
 import { trpc } from '@/lib/trpc';
 import { Loader2 } from 'lucide-react';
 import { images } from '@/config/images';
-import { useEffect, useRef, useState, useCallback } from 'react';
 import { useLocation } from 'wouter';
-
-const PAGE_SIZE = 6;
 
 export default function WorksSection() {
   const { t } = useTranslation();
   const [, setLocation] = useLocation();
 
-  const [works, setWorks] = useState<any[]>([]);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-  const [isFetchingMore, setIsFetchingMore] = useState(false);
-  const sentinelRef = useRef<HTMLDivElement>(null);
-
-  // 首次加载第 1 页
-  const { data: firstPage, isLoading } = trpc.work.search.useQuery(
-    { page: 1, pageSize: PAGE_SIZE },
+  // 首页只加载前 6 件作品，不做无限滚动
+  const { data, isLoading } = trpc.work.search.useQuery(
+    { page: 1, pageSize: 6 },
     { enabled: true }
   );
 
-  // 用于后续分页的懒加载查询
-  const utils = trpc.useUtils();
-
-  useEffect(() => {
-    if (firstPage) {
-      setWorks(firstPage.items);
-      setHasMore(firstPage.hasMore);
-      setPage(1);
-    }
-  }, [firstPage]);
-
-  const loadMore = useCallback(async () => {
-    if (isFetchingMore || !hasMore) return;
-    setIsFetchingMore(true);
-    try {
-      const nextPage = page + 1;
-      const result = await utils.work.search.fetch({ page: nextPage, pageSize: PAGE_SIZE });
-      setWorks(prev => [...prev, ...result.items]);
-      setHasMore(result.hasMore);
-      setPage(nextPage);
-    } finally {
-      setIsFetchingMore(false);
-    }
-  }, [isFetchingMore, hasMore, page, utils]);
-
-  // IntersectionObserver 监听哨兵元素
-  useEffect(() => {
-    const sentinel = sentinelRef.current;
-    if (!sentinel) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && hasMore && !isFetchingMore) {
-          loadMore();
-        }
-      },
-      { rootMargin: '200px' }
-    );
-
-    observer.observe(sentinel);
-    return () => observer.disconnect();
-  }, [hasMore, isFetchingMore, loadMore]);
+  const works = data?.items ?? [];
+  const totalWorks = data?.total ?? 0;
 
   // 高度数组，产生瀑布流错落感
   const heights = ['h-56', 'h-72', 'h-64', 'h-80', 'h-60', 'h-76'];
@@ -120,10 +71,10 @@ export default function WorksSection() {
             {works.map((work: any, index: number) => {
               const imgHeight = heights[index % heights.length];
               return (
-                <Link key={`${work.id}-${index}`} href={`/work/${work.id}`}>
+                <Link key={work.id} href={`/work/${work.id}`}>
                   <div
                     className="break-inside-avoid mb-6 reveal-animation cursor-pointer"
-                    style={{ animationDelay: `${(index % PAGE_SIZE) * 0.1}s` }}
+                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <div className="group relative bg-card border border-border rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-500">
                       {/* 作品图片 - 不同高度产生瀑布流效果 */}
@@ -135,9 +86,9 @@ export default function WorksSection() {
                         />
 
                         {/* 获奖标记 */}
-                        {work.status === 'awarded' && (
+                        {work.status === 'winner' && (
                           <div className="absolute top-4 right-4">
-                            <span className="seal-badge">{t('badge.awarded')}</span>
+                            <span className="seal-badge">{t('badge.winner')}</span>
                           </div>
                         )}
 
@@ -171,16 +122,9 @@ export default function WorksSection() {
           </div>
         )}
 
-        {/* 无限滚动哨兵 + 加载指示器 */}
-        <div ref={sentinelRef} className="flex justify-center py-8">
-          {isFetchingMore && (
-            <Loader2 className="w-6 h-6 animate-spin text-[#C8102E]" />
-          )}
-        </div>
-
-        {/* 查看更多作品按钮 */}
+        {/* 查看更多作品按钮（有作品时始终显示） */}
         {works.length > 0 && (
-          <div className="flex justify-center mt-4">
+          <div className="flex justify-center mt-8">
             <button
               onClick={() => setLocation('/works')}
               className="group relative px-10 py-3 border-2 border-[#C8102E] text-[#C8102E] font-medium tracking-widest text-sm hover:bg-[#C8102E] hover:text-white transition-all duration-300 overflow-hidden"
