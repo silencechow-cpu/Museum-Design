@@ -230,12 +230,13 @@ export default function CollectionsSection() {
             ))}
           </div>
           
-          {/* 查看更多按钮 */}
+          {/* 查看更多按鈕 */}
           {allCollections && allCollections.total >= 6 && (
             <div className="flex justify-center mt-12">
               <Link href="/collections">
-                <button className="px-8 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-all duration-300 font-medium">
-                  {t('section.collections.viewAll')}
+                <button className="group relative px-10 py-3 border-2 border-[#C8102E] text-[#C8102E] font-medium tracking-widest overflow-hidden transition-all duration-300 hover:text-white">
+                  <span className="relative z-10">{t('section.collections.viewAll')}</span>
+                  <div className="absolute inset-0 bg-[#C8102E] translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
                 </button>
               </Link>
             </div>
