@@ -5,7 +5,8 @@ import { useTranslation } from 'react-i18next';
  */
 
 import { useState, useCallback, useEffect, useMemo } from 'react';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
+import { Button } from '@/components/ui/button';
 import { Loader2, ArrowLeft, Share2, Heart } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -18,6 +19,7 @@ import LazyImage from '@/components/LazyImage';
 
 export default function CollectionList() {
   const { language, t } = useLanguage();
+  const [, setLocation] = useLocation();
   const [searchFilters, setSearchFilters] = useState<SearchFilters>({ status: 'active' });
   const [page, setPage] = useState(1);
   const [allCollections, setAllCollections] = useState<any[]>([]);
@@ -94,12 +96,14 @@ export default function CollectionList() {
         <div className="container">
           {/* 页面标题 */}
           <div className="mb-8">
-            <Link href="/">
-              <button className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4">
-                <ArrowLeft className="w-4 h-4" />
-                {t('common.backToHome')}
-              </button>
-            </Link>
+            <Button
+              variant="ghost"
+              onClick={() => setLocation('/')}
+              className="mb-4 -ml-2 hover:bg-accent"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              {t('common.backToHome')}
+            </Button>
             <h1 className="text-4xl font-bold text-foreground mb-2">
               {t('collection.list.title')}
             </h1>
