@@ -269,7 +269,7 @@ export default function CollectionDetail() {
         <div className="text-center">
           <h2 className="text-2xl font-bold text-foreground mb-4">征集项目不存在</h2>
           <Button className="bg-[#C8102E] hover:bg-[#A00D24]" onClick={() => setLocation('/')}>
-            {t('workDetail.backToHome')}
+            {t('common.backToHome')}
           </Button>
         </div>
       </div>
@@ -296,7 +296,7 @@ export default function CollectionDetail() {
           className="-ml-2 hover:bg-accent"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
-          {t('workDetail.backToHome')}
+          {t('common.backToHome')}
         </Button>
       </div>
 
