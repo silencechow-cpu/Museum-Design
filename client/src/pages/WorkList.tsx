@@ -218,70 +218,95 @@ export default function WorkList() {
           </div>
         )}
 
-        {/* 作品网格 */}
+        {/* 作品瀑布流 */}
         {allWorks.length > 0 && (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {allWorks.map((work: any) => (
-                <Link key={work.id} href={`/work/${work.id}`}>
-                  <div className="group bg-card border border-border rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer">
-                    {/* 作品图片 */}
-                    <div className="relative h-64 overflow-hidden">
-                      <LazyImage
-                        src={
-                          work.images
-                            ? JSON.parse(work.images)[0]
-                            : 'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=600&q=80'
-                        }
-                        alt={work.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      {/* 获奖标记 */}
-                      {work.status === 'winner' && (
-                        <div className="absolute top-4 right-4">
-                          <span className="seal-badge">{t('badge.awarded')}</span>
+            <style>{`
+              .worklist-masonry { column-count: 2; column-gap: 1.5rem; }
+              @media (min-width: 768px) { .worklist-masonry { column-count: 3; } }
+              @media (min-width: 1280px) { .worklist-masonry { column-count: 4; } }
+            `}</style>
+            <div className="worklist-masonry">
+              {allWorks.map((work: any, index: number) => {
+                const heights = ['180px', '240px', '200px', '280px', '160px', '220px', '260px', '190px'];
+                const imgHeight = heights[index % heights.length];
+                return (
+                  <Link key={work.id} href={`/work/${work.id}`}>
+                    <div
+                      className="cursor-pointer"
+                      style={{ breakInside: 'avoid', marginBottom: '1.5rem' }}
+                    >
+                      <div className="group relative bg-card border border-border rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-500">
+                        {/* 作品图片 - 不同高度产生瀑布流效果 */}
+                        <div className="relative overflow-hidden" style={{ height: imgHeight }}>
+                          <LazyImage
+                            src={
+                              work.images
+                                ? JSON.parse(work.images)[0]
+                                : 'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=600&q=80'
+                            }
+                            alt={work.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                          />
+                          {/* 获奖标记 */}
+                          {work.status === 'winner' && (
+                            <div className="absolute top-4 right-4">
+                              <span className="seal-badge">{t('badge.awarded')}</span>
+                            </div>
+                          )}
+                          {/* 悬停遮罩 */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end">
+                            <div className="p-4 w-full">
+                              <h3 className="text-base font-bold text-white mb-1 line-clamp-1">
+                                {work.title}
+                              </h3>
+                              <p className="text-xs text-white/80">
+                                {work.designer?.name || t('section.works.designer')}
+                              </p>
+                            </div>
+                          </div>
                         </div>
-                      )}
-                    </div>
 
-                    {/* 作品信息 */}
-                    <div className="p-4">
-                      <h3 className="text-lg font-bold text-foreground mb-2 line-clamp-1">
-                        {work.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-                        {work.description || t('common.noData')}
-                      </p>
+                        {/* 底部信息栏 */}
+                        <div className="p-4">
+                          <h3 className="text-base font-bold text-foreground mb-1 line-clamp-1">
+                            {work.title}
+                          </h3>
+                          <p className="text-xs text-muted-foreground mb-2 line-clamp-1">
+                            {work.designer?.name || t('common.noData')}
+                          </p>
 
-                      {/* 评分显示 */}
-                      <WorkRatingDisplay workId={work.id} />
+                          {/* 评分显示 */}
+                          <WorkRatingDisplay workId={work.id} />
 
-                      {/* 状态标签 */}
-                      <div className="mt-3 flex items-center gap-2">
-                        <span
-                          className={`text-xs px-2 py-1 rounded ${
-                            work.status === 'winner'
-                              ? 'bg-yellow-100 text-yellow-800'
-                              : work.status === 'approved'
-                              ? 'bg-green-100 text-green-800'
-                              : work.status === 'rejected'
-                              ? 'bg-red-100 text-red-800'
-                              : 'bg-gray-100 text-gray-800'
-                          }`}
-                        >
-                          {work.status === 'winner'
-                            ? t('badge.awarded')
-                            : work.status === 'approved'
-                            ? t('badge.approved')
-                            : work.status === 'rejected'
-                            ? t('badge.rejected')
-                            : t('badge.submitted')}
-                        </span>
+                          {/* 状态标签 */}
+                          <div className="mt-2">
+                            <span
+                              className={`text-xs px-2 py-1 rounded ${
+                                work.status === 'winner'
+                                  ? 'bg-yellow-100 text-yellow-800'
+                                  : work.status === 'approved'
+                                  ? 'bg-green-100 text-green-800'
+                                  : work.status === 'rejected'
+                                  ? 'bg-red-100 text-red-800'
+                                  : 'bg-gray-100 text-gray-800'
+                              }`}
+                            >
+                              {work.status === 'winner'
+                                ? t('badge.awarded')
+                                : work.status === 'approved'
+                                ? t('badge.approved')
+                                : work.status === 'rejected'
+                                ? t('badge.rejected')
+                                : t('badge.submitted')}
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                );
+              })}
             </div>
 
             {/* 无限滚动哨兵元素 */}
