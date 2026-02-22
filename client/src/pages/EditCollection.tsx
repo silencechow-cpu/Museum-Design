@@ -46,7 +46,7 @@ export default function EditCollection() {
   const updateMutation = trpc.collection.update.useMutation({
     onSuccess: () => {
       alert(t('editCollection.updateSuccess'));
-      setLocation(`/collections/${collectionId}`);
+      setLocation(`/collection/${collectionId}`);
     },
     onError: (error) => {
       alert(t('editCollection.updateError', { message: error.message }));
@@ -157,7 +157,7 @@ export default function EditCollection() {
       <Button
         variant="ghost"
         className="mb-4"
-        onClick={() => setLocation(`/collections/${collectionId}`)}
+        onClick={() => setLocation(`/collection/${collectionId}`)}
       >
         <ArrowLeft className="w-4 h-4 mr-2" />
         {t('editCollection.backToDetail')}
@@ -361,7 +361,7 @@ export default function EditCollection() {
               <Button
                 type="button"
                 variant="outline"
-                onClick={() => setLocation(`/collections/${collectionId}`)}
+                onClick={() => setLocation(`/collection/${collectionId}`)}
               >
                 {t('editCollection.form.cancel')}
               </Button>

@@ -127,7 +127,7 @@ export default function OnboardingComplete() {
                     <div
                       key={museum.id}
                       className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                      onClick={() => setLocation(`/museums/${museum.id}`)}
+                      onClick={() => setLocation(`/museum/${museum.id}`)}
                     >
                       <div className="flex items-center gap-3">
                         {museum.logo && (
@@ -168,7 +168,7 @@ export default function OnboardingComplete() {
                     <div
                       key={collection.id}
                       className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                      onClick={() => setLocation(`/collections/${collection.id}`)}
+                      onClick={() => setLocation(`/collection/${collection.id}`)}
                     >
                       <div>
                         <p className="font-medium">{collection.title}</p>
