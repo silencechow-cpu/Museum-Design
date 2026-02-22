@@ -30,7 +30,8 @@
     "clearAll": "清除全部",
     "prevPage": "上一頁",
     "nextPage": "下一頁",
-    "backToHome": "返回首頁"
+    "backToHome": "返回首頁",
+    "viewDetails": "查看詳情"
   },
   "nav": {
     "home": "首頁",

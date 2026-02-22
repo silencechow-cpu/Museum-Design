@@ -222,7 +222,7 @@ export default function CollectionsSection() {
 
                 <Link href={`/collection/${collection.id}`}>
                   <button className="mt-4 w-full py-2 border border-primary text-primary rounded-md hover:bg-primary hover:text-primary-foreground transition-all duration-300">
-                    {t('common.viewMore')}
+                    {t('common.viewDetails')}
                   </button>
                 </Link>
               </div>

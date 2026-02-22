@@ -30,7 +30,8 @@
     "clearAll": "Clear All",
     "prevPage": "Previous",
     "nextPage": "Next",
-    "backToHome": "Back to Home"
+    "backToHome": "Back to Home",
+    "viewDetails": "View Details"
   },
   "nav": {
     "home": "Home",
