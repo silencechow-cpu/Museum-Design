@@ -222,9 +222,34 @@ export default function WorkList() {
         {allWorks.length > 0 && (
           <>
             <style>{`
-              .worklist-masonry { column-count: 2; column-gap: 1.5rem; }
-              @media (min-width: 768px) { .worklist-masonry { column-count: 3; } }
-              @media (min-width: 1280px) { .worklist-masonry { column-count: 4; } }
+              .worklist-masonry {
+                -webkit-column-count: 2;
+                -moz-column-count: 2;
+                column-count: 2;
+                -webkit-column-gap: 1.5rem;
+                -moz-column-gap: 1.5rem;
+                column-gap: 1.5rem;
+                -webkit-perspective: 1;
+              }
+              @media (min-width: 768px) {
+                .worklist-masonry {
+                  -webkit-column-count: 3;
+                  -moz-column-count: 3;
+                  column-count: 3;
+                }
+              }
+              @media (min-width: 1280px) {
+                .worklist-masonry {
+                  -webkit-column-count: 4;
+                  -moz-column-count: 4;
+                  column-count: 4;
+                }
+              }
+              .worklist-masonry-item {
+                -webkit-column-break-inside: avoid;
+                page-break-inside: avoid;
+                break-inside: avoid;
+              }
             `}</style>
             <div className="worklist-masonry">
               {allWorks.map((work: any, index: number) => {
@@ -233,8 +258,8 @@ export default function WorkList() {
                 return (
                   <Link key={work.id} href={`/work/${work.id}`}>
                     <div
-                      className="cursor-pointer"
-                      style={{ breakInside: 'avoid', marginBottom: '1.5rem' }}
+                      className="worklist-masonry-item cursor-pointer"
+                      style={{ marginBottom: '1.5rem' }}
                     >
                       <div className="group relative bg-card border border-border rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-500">
                         {/* 作品图片 - 不同高度产生瀑布流效果 */}

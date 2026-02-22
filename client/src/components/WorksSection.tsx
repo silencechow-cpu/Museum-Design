@@ -68,9 +68,34 @@ export default function WorksSection() {
         {works.length > 0 && (
           <>
           <style>{`
-            .works-masonry { column-count: 2; column-gap: 1.5rem; }
-            @media (min-width: 768px) { .works-masonry { column-count: 3; } }
-            @media (min-width: 1280px) { .works-masonry { column-count: 4; } }
+            .works-masonry {
+              -webkit-column-count: 2;
+              -moz-column-count: 2;
+              column-count: 2;
+              -webkit-column-gap: 1.5rem;
+              -moz-column-gap: 1.5rem;
+              column-gap: 1.5rem;
+              -webkit-perspective: 1;
+            }
+            @media (min-width: 768px) {
+              .works-masonry {
+                -webkit-column-count: 3;
+                -moz-column-count: 3;
+                column-count: 3;
+              }
+            }
+            @media (min-width: 1280px) {
+              .works-masonry {
+                -webkit-column-count: 4;
+                -moz-column-count: 4;
+                column-count: 4;
+              }
+            }
+            .works-masonry-item {
+              -webkit-column-break-inside: avoid;
+              page-break-inside: avoid;
+              break-inside: avoid;
+            }
           `}</style>
           <div className="works-masonry">
             {works.map((work: any, index: number) => {
@@ -78,8 +103,8 @@ export default function WorksSection() {
               return (
                 <Link key={work.id} href={`/work/${work.id}`}>
                   <div
-                    className="reveal-animation cursor-pointer"
-                    style={{ breakInside: 'avoid', marginBottom: '1.5rem', animationDelay: `${index * 0.08}s` }}
+                    className="works-masonry-item reveal-animation cursor-pointer"
+                    style={{ marginBottom: '1.5rem', animationDelay: `${index * 0.08}s` }}
                   >
                     <div className="group relative bg-card border border-border rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-500">
                       {/* 作品图片 - 不同高度产生瀑布流效果 */}
